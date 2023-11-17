@@ -1,0 +1,10 @@
+venv
+.git
+db.sqlite3 
+
+# Environments
+.env
+
+# IDE
+.idea
+.vscode
