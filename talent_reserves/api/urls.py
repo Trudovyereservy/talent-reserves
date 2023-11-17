@@ -1,9 +1,8 @@
-from rest_framework import routers
+from django.urls import path
 
-from .views import GetOkView
+from .views import get_ok
 
 
-router = routers.SimpleRouter()
-router.register('healthcheck/', GetOkView, basename='get_ok')
-
-urlpatterns = router.urls
+urlpatterns = [
+    path('healthcheck/', get_ok, name='ok_endpoint'),
+]
