@@ -134,9 +134,4 @@ SPECTACULAR_SETTINGS = {
     'DESCRIPTION': 'Официальная документация по API проекта "Трудовые ресурсы"',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
-    'SERVE_PERMISSIONS': ['rest_framework.permissions.AllowAny'],
-    'SERVE_AUTHENTICATION': None,
-    "SWAGGER_UI_SETTINGS": {
-        "persistAuthorization": False,
-    },
 }
