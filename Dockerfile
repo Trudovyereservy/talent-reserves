@@ -6,6 +6,6 @@ COPY requirements.txt .
 
 RUN pip install -r requirements.txt --no-cache-dir
 
-COPY . .
+COPY ./talent_reserves .
 
 CMD ["python", "manage.py", "runserver", "0:8000"]
