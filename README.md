@@ -1,3 +1,39 @@
-# backend
+## Trudovyereservy / (Трудовые резервы)
 
-тест
+Проект сайта для Общественно полезного фонда кадрового и спортивно-культурного развития "Трудовые резервы".
+Проект представляет собой онлайн-сервис и API для него.
+Реализован на Django и DjangoRestFramework.
+
+- Целевая аудитория: c 7 лет
+
+<details>
+<summary>Stack</summary>
+
+- Python 3.11
+- Django 4.2.7
+- DRF 3.14.0
+- Docker
+- Docker-Compose
+
+</details>
+
+<details>
+<summary>Установка и запуск проекта</summary>
+
+</details>
+
+<details>
+<summary>Команда разработки</summary>
+
+Тимлид:
+
+- [Кирилл Лесников](https://github.com/lekirill)
+
+Разработчики:
+
+- [Вероника Лаптева](https://github.com/VeronikaLapteva)
+- [Виктория Латышева](https://github.com/vikkilat)
+- [Всеволод Зайковский](https://github.com/4lk4st)
+
+
+</details>
