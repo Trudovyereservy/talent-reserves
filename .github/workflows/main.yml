@@ -1,11 +1,8 @@
 name: Main pull request workflow
 on:
-  push:
+  pull_request:
     branches:
-      - feature/init_cicd
-  # pull_request:
-  #   branches:
-  #     - main
+      - main
 
 jobs:
   tests:
