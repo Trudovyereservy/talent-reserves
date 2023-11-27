@@ -1,6 +1,6 @@
 from rest_framework.pagination import PageNumberPagination
 
-PAGE_SIZE = 3
+PAGE_SIZE = 9
 
 
 class NewsPagination(PageNumberPagination):
