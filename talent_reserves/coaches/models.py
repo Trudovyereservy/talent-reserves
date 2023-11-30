@@ -34,10 +34,14 @@ class Coach(models.Model):
     Модель для хранения информации о тренерах.
     '''
     surname = models.CharField(
-        max_length=NAME_MAX_LENGTH
+        max_length=NAME_MAX_LENGTH,
+        blank=False,
+        null=False,
     )
     name = models.CharField(
-        max_length=NAME_MAX_LENGTH
+        max_length=NAME_MAX_LENGTH,
+        blank=False,
+        null=False,
     )
     patronymic = models.CharField(
         max_length=NAME_MAX_LENGTH,
