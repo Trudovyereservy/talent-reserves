@@ -9,4 +9,4 @@ class CoachSerializer(serializers.ModelSerializer):
     class Meta:
         model = Coach
         fields = ['surname', 'name', 'patronymic',
-                  'achievements', 'directions']
+                  'achievements', 'directions', 'photo']

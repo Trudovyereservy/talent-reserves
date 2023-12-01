@@ -2,21 +2,27 @@ from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from talent_reserves.coaches.models import Coach
+from django_filters.rest_framework import DjangoFilterBackend
+
+from coaches.models import Coach
 from .serializers import CoachSerializer
 
 
 class CoachViewSet(viewsets.ReadOnlyModelViewSet):
     """
-    A simple ViewSet for viewing accounts.
+    Вьюсет для отображения информации о тренерах.
+    Работает только на чтение (list, retrieve).
+    Имеется фильтрация по полю slug модели Directions.
     """
     queryset = Coach.objects.all()
     serializer_class = CoachSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['directions__slug',]
 
 
 @api_view()
 def get_ok(request):
     '''
-    Тестовый endpoint для SwaggerUI
+    Тестовая вью-функция для SwaggerUI
     '''
     return Response({"message": "ok"})
