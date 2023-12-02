@@ -5,7 +5,6 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', default=' ')
-# SECRET_KEY = 'django-insecure-r8*8%h4msj-*0q)!k0&(a7p6k^$7b+m5nf@8#bs+890t6mi2ps'
 
 DEBUG = True
 
@@ -66,7 +65,6 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT', 5432)
     }
 }
-
 
 
 AUTH_PASSWORD_VALIDATORS = [
