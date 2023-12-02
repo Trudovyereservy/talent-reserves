@@ -1,12 +1,13 @@
+import pytest
 from coaches.models import Coach, Direction
 
-
-def test_create_coach(db) -> None:
+@pytest.mark.django_db
+def test_create_coach() -> None:
     
     Direction.objects.bulk_create([
-        Direction(name='бокс', slug='box'),
-        Direction(name='лыжи', slug='ski'),
-        Direction(name='биатлон', slug='biathlon')
+        Direction(title='бокс', slug='box'),
+        Direction(title='лыжи', slug='ski'),
+        Direction(title='биатлон', slug='biathlon')
     ])
 
     test_coach_1 = Coach.objects.create(
@@ -34,4 +35,4 @@ def test_create_coach(db) -> None:
         Direction.objects.get(slug='biathlon')
     )
 
-    assert test_coach_1.username == 'Иван'
+    assert Coach.objects.count() == 2

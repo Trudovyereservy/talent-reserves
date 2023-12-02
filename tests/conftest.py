@@ -10,3 +10,5 @@ def api_client() -> APIClient:
     :return: APIClient
     """
     yield APIClient()
+
+
