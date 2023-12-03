@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from news.models import News, ContentNews
+
+from news.models import ContentNews, News
 
 
 class ContentNewsSerializer(serializers.ModelSerializer):
