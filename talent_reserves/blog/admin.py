@@ -12,14 +12,14 @@ class PostAdmin(admin.ModelAdmin):
                     'get_tags',
                     'image')
     list_filter = ('publication_date',)
-    empty_value_display = '-пусто-'
+    empty_value_display = '-empty-'
 
-    def get_tags(self):
-        return ",".join([str(p) for p in self.tags.all()])
+    def get_tags(self, obj):
+        return ",".join([str(p) for p in obj.tags.all()])
 
 
 @admin.register(Tag)
 class TagAdmin(admin.ModelAdmin):
     list_display = ('pk', 'name', 'slug',)
     list_filter = ('name',)
-    empty_value_display = '-пусто-'
+    empty_value_display = '-empty-'

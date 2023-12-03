@@ -1,0 +1,5 @@
+{
+    "python.analysis.extraPaths": [
+        "./talent_reserves"
+    ]
+}

@@ -10,7 +10,7 @@ class Tag(models.Model):
         verbose_name='tag',
     )
     slug = models.SlugField(
-        unique=True
+        unique=True,
     )
 
     class Meta:
