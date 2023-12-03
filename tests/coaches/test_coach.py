@@ -1,38 +1,74 @@
 import pytest
+from rest_framework.test import APIClient
+
 from coaches.models import Coach, Direction
 
+
 @pytest.mark.django_db
-def test_create_coach() -> None:
-    
-    Direction.objects.bulk_create([
-        Direction(title='бокс', slug='box'),
-        Direction(title='лыжи', slug='ski'),
-        Direction(title='биатлон', slug='biathlon')
-    ])
+def test_coach_list(
+    api_client: APIClient,
+    ) -> None:
+    """
+    Тестирование доступности эндпоинта со списком тренеров.
+    """
+    response = api_client.get("/coaches/")
+    assert response.status_code == 200
 
-    test_coach_1 = Coach.objects.create(
-            surname = 'Поддубный',
-            name = 'Иван',
-            patronymic = 'Максимович',
-            birthday = '1871-10-08',
-            achievements = 'Шестикратный чемпион мира',
-            photo = '',
-    )
-    test_coach_1.directions.add(
-        Direction.objects.get(slug='box'),
-    )
 
-    test_coach_2 = Coach.objects.create(
-            surname = 'Тихонов',
-            name = 'Александр',
-            patronymic = 'Иванович',
-            birthday = '1947-01-02',
-            achievements = 'Четырехкратный олимпийский чемпион',
-            photo = '',
-    )
-    test_coach_2.directions.add(
-        Direction.objects.get(slug='ski'),
-        Direction.objects.get(slug='biathlon')
-    )
+@pytest.mark.django_db
+def test_coach_id(
+    api_client: APIClient,
+    create_coaches: list[Coach],
+    ) -> None:
+    """
+    Тестирование доступности эндпоинта c конкретным тренером.
+    """
+    response = api_client.get("/coaches/2/")
+    assert response.status_code == 200
+    assert response.json()["name"] == "Александр"
 
-    assert Coach.objects.count() == 2
+
+@pytest.mark.django_db
+def test_coach_pagination(
+    api_client: APIClient,
+    create_coaches: list[Coach],
+    ) -> None:
+    """
+    Тестирование пагинации списка тренеров.
+    Требуется вывести - 2 тренера.
+    """
+    response = api_client.get("/coaches/?limit=2")
+    data = response.json()
+
+    assert len(data["results"]) == 2
+
+
+@pytest.mark.django_db
+def test_coach_filtration(
+    api_client: APIClient,
+    create_coaches: list[Coach],
+    ) -> None:
+    """
+    Тестирование фильтрации списка тренеров по направлению работы.
+    Требуется вывести тренеров с направлением "бокс".
+    """
+    response = api_client.get("/coaches/?directions__slug=box")
+    data = response.json()
+
+    assert len(data["results"]) == 2
+    assert "бокс" in data["results"][0]["directions"]
+    assert "бокс" in data["results"][1]["directions"]
+
+
+@pytest.mark.django_db
+def test_coach_filtration(
+    api_client: APIClient,
+    create_coaches: list[Coach],
+    ) -> None:
+    """
+    Тестирование поля "фамилия" в списке тренеров.
+    """
+    response = api_client.get("/coaches/")
+    data = response.json()
+
+    assert data["results"][2]["surname"] == "Белоцерковская"

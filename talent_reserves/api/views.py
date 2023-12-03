@@ -6,6 +6,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 from coaches.models import Coach
 from .serializers import CoachSerializer
+from .pagination import CoachPagination
 
 
 class CoachViewSet(viewsets.ReadOnlyModelViewSet):
@@ -18,6 +19,7 @@ class CoachViewSet(viewsets.ReadOnlyModelViewSet):
     serializer_class = CoachSerializer
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['directions__slug',]
+    pagination_class = CoachPagination
 
 
 @api_view()
