@@ -33,7 +33,7 @@ class ContentNews(models.Model):
         on_delete=models.CASCADE
         )
     image = models.ImageField(
-        upload_to='photos_news/'
+        upload_to='photo_news/'
         )
     title_photo = models.CharField(
         max_length=120,

@@ -16,7 +16,7 @@ class NewsAdmin(admin.ModelAdmin):
 
 class ContentNewsAdmin(admin.ModelAdmin):
     list_display = (
-        'get_news_title', 'title_photo', 'author_photo', 'date_photo'
+        'get_news_title', 'image', 'title_photo', 'author_photo', 'date_photo'
         )
 
     def get_news_title(self, obj):
