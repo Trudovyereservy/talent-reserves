@@ -1,4 +1,5 @@
 import pytest
+
 from blog.models import Post, Tag
 
 

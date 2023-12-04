@@ -1,5 +1,6 @@
-from blog.models import Post, Tag
 from rest_framework import serializers
+
+from blog.models import Post, ContentPost, Tag
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -8,8 +9,15 @@ class TagSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class ContentPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContentPost
+        fields = '__all__'
+
+
 class PostSerializer(serializers.ModelSerializer):
     tags = TagSerializer(many=True, read_only=True)
+    images = ContentPostSerializer(many=True, read_only=True)
 
     class Meta:
         model = Post
