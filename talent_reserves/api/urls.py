@@ -1,7 +1,7 @@
 from django.urls import include, path
 from rest_framework.routers import SimpleRouter
 
-from .views import get_ok, PostListViewSet
+from .views import PostListViewSet, get_ok
 
 router = SimpleRouter()
 

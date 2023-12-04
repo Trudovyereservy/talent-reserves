@@ -1,5 +1,5 @@
-from rest_framework import serializers
 from blog.models import Post, Tag
+from rest_framework import serializers
 
 
 class TagSerializer(serializers.ModelSerializer):
