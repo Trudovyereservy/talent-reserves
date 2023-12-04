@@ -48,7 +48,7 @@ def test_pagination_news(api_client: APIClient):
         [
             News(
                 title=f'Новость {i}',
-                content=f'Особо важная новость {i}',
+                description=f'Особо важная новость {i}',
             )
             for i in range(15)
         ]

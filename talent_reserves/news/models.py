@@ -8,7 +8,7 @@ class News(models.Model):
     title = models.CharField(
         max_length=120
         )
-    content = models.TextField()
+    description = models.TextField()
     date_published = models.DateTimeField(
         auto_now_add=True, db_index=True
         )

@@ -3,15 +3,21 @@ from django.contrib import admin
 from .models import ContentNews, News
 
 
-class NewsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'short_content', 'date_published')
+class ContentNewsInline(admin.TabularInline):
+    model = ContentNews
+    extra = 1
 
-    def short_content(self, obj):
-        if len(obj.content) > 50:
-            return obj.content[:50] + '...'
+
+class NewsAdmin(admin.ModelAdmin):
+    list_display = ('title', 'short_description', 'date_published')
+    inlines = [ContentNewsInline]
+
+    def short_description(self, obj):
+        if len(obj.description) > 50:
+            return obj.description[:50] + '...'
         else:
-            return obj.content
-    short_content.short_description = 'Short Content'
+            return obj.description
+    short_description.short_description = 'Short Description'
 
 
 class ContentNewsAdmin(admin.ModelAdmin):
