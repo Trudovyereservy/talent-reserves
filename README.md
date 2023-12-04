@@ -25,36 +25,11 @@
 git clone https://github.com/Trudovyereservy/backend.git
 ```
 ```
-cd talent_reserves
-```
+* В корне проекта создать файл .env и заполнить его по образцу из файла .env.example
 
-* Cоздать и активировать виртуальное окружение:
+* Запустить Докер:
 ```
-python -m venv venv
-```
-```
-source venv/Scripts/activate
-```
-
-* Установить зависимости из файла ```requirements.txt```:
-```
-pip install -r requirements.txt
-```
-
-* Запустить базу данных в Докере:
-```
-docker-compose up -d --build db
-```
-
-* Выполнить миграции:
-```
-python manage.py makemigrations
-python manage.py migrate
-```
-
-* Запустить проект:
-```
-python manage.py runserver
+docker-compose up -d --build
 ```
 
 * Документация к API доступна по ссылке:
