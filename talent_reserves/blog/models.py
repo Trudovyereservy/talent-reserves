@@ -31,11 +31,6 @@ class Post(models.Model):
         Tag,
         verbose_name='tag',
     )
-    # Доработать поле image с учетом хранилища S3
-    image = models.ImageField(
-        upload_to='posts/',
-        blank=True
-    )
 
     class Meta:
         ordering = ['-publication_date']
@@ -44,3 +39,20 @@ class Post(models.Model):
 
     def __str__(self):
         return self.text[:15]
+
+
+class ContentPost(models.Model):
+    """Model of content for posts."""
+    post = models.ForeignKey(
+        Post,
+        related_name='images',
+        on_delete=models.CASCADE
+        )
+    image = models.ImageField(
+        upload_to='posts/',
+        blank=True
+    )
+
+    class Meta:
+        verbose_name = 'content_post'
+        verbose_name_plural = 'content_posts'
