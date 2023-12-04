@@ -24,7 +24,6 @@ def create_posts(db):
         text='В воскресенье, 15 декабря 2023 года, состоятся соревнования.',
         short_description='Соревнования',
         publication_date='2023-11-20',
-        image='',
     )
     test_post1.tags.add(
         Tag.objects.get(slug='events'),
@@ -34,7 +33,6 @@ def create_posts(db):
         text='Упражнения для укрепления мышц спины',
         short_description='Мышцы спины',
         publication_date='2023-11-30',
-        image='',
     )
     test_post2.tags.add(
         Tag.objects.get(slug='exercises'),
@@ -44,7 +42,6 @@ def create_posts(db):
         text='5 декабря наша команда едет на соревнования в Москву.',
         short_description='Соревнования в Москве',
         publication_date='2023-11-20',
-        image='',
     )
     test_post3.tags.add(
         Tag.objects.get(slug='events'),

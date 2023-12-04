@@ -24,3 +24,12 @@ def test_posts_pagination(api_client, create_posts):
     data = response.json()
 
     assert len(data['results']) == 3
+
+
+@pytest.mark.django_db
+def test_tags_filtration(api_client, create_posts):
+    """Тестирование фильтрации постов по тегам."""
+    response = api_client.get('/posts/?tags__slug=events')
+    data = response.json()
+
+    assert len(data['results']) == 2
