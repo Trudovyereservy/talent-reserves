@@ -4,6 +4,7 @@ from blog.models import Post
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
+from django_filters.rest_framework import DjangoFilterBackend
 
 
 @api_view()
@@ -19,3 +20,5 @@ class PostListViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     pagination_class = BlogPagination
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['tags__slug',]

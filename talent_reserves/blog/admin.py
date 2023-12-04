@@ -27,7 +27,7 @@ class ContentPostAdmin(admin.ModelAdmin):
 
 class TagAdmin(admin.ModelAdmin):
     list_display = ('pk', 'name', 'slug',)
-    list_filter = ('name',)
+    list_filter = ('slug',)
     empty_value_display = '-empty-'
 
 
