@@ -5,7 +5,6 @@ import os
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY', default=' ')
-# SECRET_KEY = 'django-insecure-r8*8%h4msj-*0q)!k0&(a7p6k^$7b+m5nf@8#bs+890t6mi2ps'
 
 DEBUG = True
 
@@ -13,6 +12,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
+    'coaches.apps.CoachesConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -21,6 +21,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'drf_spectacular',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -57,14 +58,13 @@ WSGI_APPLICATION = 'talent_reserves.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'django'),
-        'USER': os.getenv('POSTGRES_USER', 'django'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
-        'HOST': os.getenv('DB_HOST', 'db'),
+        'NAME': os.getenv('POSTGRES_DB', 'postgres'),
+        'USER': os.getenv('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'postgres'),
+        'HOST': os.getenv('DB_HOST', 'localhost'),
         'PORT': os.getenv('DB_PORT', 5432)
     }
 }
-
 
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -93,6 +93,9 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 REST_FRAMEWORK = {
@@ -101,7 +104,7 @@ REST_FRAMEWORK = {
 
 SPECTACULAR_SETTINGS = {
     'TITLE': 'Talent Reserves API',
-    'DESCRIPTION': 'Официальная документация по API проекта "Трудовые ресурсы"',
+    'DESCRIPTION': 'Talent Reserves official API',
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
