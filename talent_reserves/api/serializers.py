@@ -19,8 +19,14 @@ class NewsSerializer(serializers.ModelSerializer):
 
     def to_representation(self, instance):
         representation = super().to_representation(instance)
+        request = self.context.get('request')
         content_news_instances = ContentNews.objects.filter(news=instance)
         images_data = ContentNewsSerializer(
-            content_news_instances, many=True).data
+            content_news_instances, many=True,
+            context={'request': request}).data
+        for image_data in images_data:
+            image_data['image'] = request.build_absolute_uri(
+                image_data['image'])
+
         representation['images'] = images_data
         return representation
