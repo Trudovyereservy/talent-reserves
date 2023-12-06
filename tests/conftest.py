@@ -16,8 +16,8 @@ def api_client() -> APIClient:
 def create_posts(db):
     '''Fixture to create posts.'''
     Tag.objects.bulk_create([
-        Tag(name='События', slug='events'),
-        Tag(name='Упражнения', slug='exercises')
+        Tag(name='events', slug='events'),
+        Tag(name='exercises', slug='exercises')
     ])
 
     test_post1 = Post.objects.create(
@@ -26,7 +26,7 @@ def create_posts(db):
         publication_date='2023-11-20',
     )
     test_post1.tags.add(
-        Tag.objects.get(slug='events'),
+        Tag.objects.get(name='events'),
     )
 
     test_post2 = Post.objects.create(
@@ -35,7 +35,7 @@ def create_posts(db):
         publication_date='2023-11-30',
     )
     test_post2.tags.add(
-        Tag.objects.get(slug='exercises'),
+        Tag.objects.get(name='exercises'),
     )
 
     test_post3 = Post.objects.create(
@@ -44,7 +44,7 @@ def create_posts(db):
         publication_date='2023-11-20',
     )
     test_post3.tags.add(
-        Tag.objects.get(slug='events'),
+        Tag.objects.get(name='events'),
     )
 
     return [test_post1, test_post2, test_post3]

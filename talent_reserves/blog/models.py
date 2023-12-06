@@ -56,3 +56,18 @@ class ContentPost(models.Model):
     class Meta:
         verbose_name = 'content_post'
         verbose_name_plural = 'content_posts'
+
+
+class TagPost(models.Model):
+    """Model for connecting Tag and Post"""
+
+    tag = models.ForeignKey(
+        Tag,
+        on_delete=models.CASCADE,
+        related_name='tag_posts',
+    )
+    post = models.ForeignKey(
+        Post,
+        on_delete=models.CASCADE,
+        related_name='tag_posts',
+    )

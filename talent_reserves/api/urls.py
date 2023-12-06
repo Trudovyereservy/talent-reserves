@@ -5,7 +5,7 @@ from .views import PostListViewSet, get_ok
 
 router = SimpleRouter()
 
-router.register('posts', PostListViewSet)
+router.register('post', PostListViewSet)
 
 urlpatterns = [
     path('', include(router.urls)),

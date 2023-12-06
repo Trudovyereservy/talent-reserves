@@ -6,13 +6,13 @@ from blog.models import Post, ContentPost, Tag
 class TagSerializer(serializers.ModelSerializer):
     class Meta:
         model = Tag
-        fields = '__all__'
+        fields = ('name',)
 
 
 class ContentPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContentPost
-        fields = '__all__'
+        fields = ('image',)
 
 
 class PostSerializer(serializers.ModelSerializer):
@@ -22,3 +22,8 @@ class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = '__all__'
+
+    def get_images(self, obj):
+        content_posts = obj.images.all()
+        serializer = ContentPostSerializer(content_posts, many=True)
+        return [item['image'].name for item in serializer.data]

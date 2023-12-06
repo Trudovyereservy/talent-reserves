@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Post, ContentPost, Tag
+from .models import ContentPost, Post, Tag, TagPost
 
 
 class ContentPostInline(admin.TabularInline):
@@ -28,10 +28,15 @@ class ContentPostAdmin(admin.ModelAdmin):
 
 class TagAdmin(admin.ModelAdmin):
     list_display = ('pk', 'name', 'slug',)
-    list_filter = ('slug',)
+    list_filter = ('name',)
     empty_value_display = '-empty-'
+
+
+class TagPostAdmin(admin.ModelAdmin):
+    list_display = ('tag',)
 
 
 admin.site.register(Post, PostAdmin)
 admin.site.register(ContentPost, ContentPostAdmin)
 admin.site.register(Tag, TagAdmin)
+admin.site.register(TagPost, TagPostAdmin)
