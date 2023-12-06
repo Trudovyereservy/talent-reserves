@@ -16,3 +16,11 @@ class NewsSerializer(serializers.ModelSerializer):
         model = News
         fields = ['id', 'title', 'description',
                   'date_published', 'images']
+
+    def to_representation(self, instance):
+        representation = super().to_representation(instance)
+        content_news_instances = ContentNews.objects.filter(news=instance)
+        images_data = ContentNewsSerializer(
+            content_news_instances, many=True).data
+        representation['images'] = images_data
+        return representation

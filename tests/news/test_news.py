@@ -31,7 +31,7 @@ def test_news_id(
 def test_content_news(create_news: list[News],) -> None:
     """
     Тестирование, что все новости созданы и фото-контент принадлежит
-    определенной новосоти.
+    определенной новости.
     """
     assert News.objects.count() == 2
     assert ContentNews.objects.filter(news=create_news[1]).count() == 2

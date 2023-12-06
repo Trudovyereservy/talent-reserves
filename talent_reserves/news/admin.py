@@ -9,7 +9,8 @@ class ContentNewsInline(admin.TabularInline):
 
 
 class NewsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'short_description', 'date_published')
+    list_display = ('title', 'short_description', 'date_published',
+                    'created_at', 'updated_at')
     inlines = [ContentNewsInline]
 
     def short_description(self, obj):
@@ -22,8 +23,8 @@ class NewsAdmin(admin.ModelAdmin):
 
 class ContentNewsAdmin(admin.ModelAdmin):
     list_display = (
-        'get_news_title', 'image', 'title_photo', 'author_photo', 'date_photo'
-        )
+        'get_news_title', 'image', 'title_photo', 'author_photo', 'date_photo',
+        'created_at', 'updated_at')
 
     def get_news_title(self, obj):
         return obj.news.title if obj.news else None
