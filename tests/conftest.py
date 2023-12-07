@@ -21,10 +21,12 @@ def create_news(db) -> list[News]:
     news_1 = News.objects.create(
             title='Новость 1',
             description='Особо важная 1',
+            date_published='2023-12-07T07:01:21Z',
     )
     news_2 = News.objects.create(
             title='Новость 2',
             description='Особо важная 2',
+            date_published='2023-12-07T07:01:22Z',
     )
     contentnews_1 = ContentNews.objects.create(
         news=news_1,

@@ -1,5 +1,3 @@
-from datetime import datetime
-
 from django.db import models
 
 
@@ -12,16 +10,10 @@ class News(models.Model):
         )
     description = models.TextField()
     date_published = models.DateTimeField(
-        blank=True, null=True,
         help_text='Дата и время публикации (с отсрочкой)'
     )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-
-    def save(self, *args, **kwargs):
-        if not self.date_published:
-            self.date_published = datetime.now()
-        super().save(*args, **kwargs)
 
     class Meta:
         ordering = ('-date_published',)

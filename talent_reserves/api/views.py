@@ -1,3 +1,4 @@
+from django.utils import timezone
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -21,3 +22,8 @@ class NewsViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
     pagination_class = NewsPagination
+
+    def get_queryset(self):
+        current_datetime = timezone.now()
+        queryset = News.objects.filter(date_published__lte=current_datetime)
+        return queryset
