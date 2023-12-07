@@ -1,12 +1,14 @@
+from django.utils import timezone
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from django_filters.rest_framework import DjangoFilterBackend
-
 from coaches.models import Coach
-from .serializers import CoachSerializer
-from .pagination import CoachPagination
+from news.models import News
+
+from .pagination import CoachPagination, NewsPagination
+from .serializers import CoachSerializer, NewsSerializer
 
 
 class CoachViewSet(viewsets.ReadOnlyModelViewSet):
@@ -20,6 +22,18 @@ class CoachViewSet(viewsets.ReadOnlyModelViewSet):
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['directions__slug',]
     pagination_class = CoachPagination
+
+
+class NewsViewSet(viewsets.ReadOnlyModelViewSet):
+    """Вьюсет для отображения списка новостей."""
+    queryset = News.objects.all()
+    serializer_class = NewsSerializer
+    pagination_class = NewsPagination
+
+    def get_queryset(self):
+        current_datetime = timezone.now()
+        queryset = News.objects.filter(date_published__lte=current_datetime)
+        return queryset
 
 
 @api_view()

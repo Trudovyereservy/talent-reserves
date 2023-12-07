@@ -1,7 +1,11 @@
 from rest_framework.pagination import PageNumberPagination
 
+PAGE_SIZE = 6
 
-COACH_PAGE_SIZE = 6
+
+class NewsPagination(PageNumberPagination):
+    page_size = PAGE_SIZE
+    page_size_query_param = 'limit'
 
 
 class CoachPagination(PageNumberPagination):
@@ -10,5 +14,5 @@ class CoachPagination(PageNumberPagination):
     задания размера страницы. Для исключения дублирования
     нужно оставить один подобный класс для всех.
     """
-    page_size = COACH_PAGE_SIZE
+    page_size = PAGE_SIZE
     page_size_query_param = 'limit'
