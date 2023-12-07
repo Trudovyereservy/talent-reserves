@@ -36,9 +36,9 @@ class NewsViewSet(viewsets.ReadOnlyModelViewSet):
         current_datetime = timezone.now()
         queryset = News.objects.filter(date_published__lte=current_datetime)
         return queryset
-      
-      
- class PostListViewSet(viewsets.ReadOnlyModelViewSet):
+
+
+class PostListViewSet(viewsets.ReadOnlyModelViewSet):
     """Вьюсет для работы с постами."""
     queryset = Post.objects.all()
     serializer_class = PostSerializer
@@ -58,6 +58,7 @@ class NewsViewSet(viewsets.ReadOnlyModelViewSet):
             queryset = queryset.filter(id__in=post_ids)
 
         return queryset
+
 
 @api_view()
 def get_ok(request):
