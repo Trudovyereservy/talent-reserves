@@ -5,6 +5,7 @@ PAGE_SIZE = 6
 
 class NewsPagination(PageNumberPagination):
     page_size = PAGE_SIZE
+    page_size_query_param = 'limit'
 
 
 class CoachPagination(PageNumberPagination):

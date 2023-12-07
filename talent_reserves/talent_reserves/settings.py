@@ -12,7 +12,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
     'coaches.apps.CoachesConfig',
-    'news.apps.NewsConfig'
+    'news.apps.NewsConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

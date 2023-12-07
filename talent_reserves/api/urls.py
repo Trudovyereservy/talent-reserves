@@ -1,14 +1,13 @@
-from django.urls import path, include
+from django.urls import include, path
 from rest_framework.routers import DefaultRouter
 
-from .views import get_ok, CoachViewSet, NewsViewSet
+from .views import CoachViewSet, NewsViewSet, get_ok
+
 
 router = DefaultRouter()
 
-router.register(r'news', NewsViewSet, basename='news')
-
-router = DefaultRouter()
 router.register('coaches', CoachViewSet)
+router.register('news', NewsViewSet, basename='news')
 
 urlpatterns = [
     path('healthcheck/', get_ok, name='ok_endpoint'),
