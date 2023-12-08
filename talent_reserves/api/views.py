@@ -1,7 +1,6 @@
-
 from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import viewsets
+from rest_framework import status, viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
@@ -9,6 +8,7 @@ from blog.models import Post, Tag, TagPost
 from coaches.models import Coach
 from news.models import News
 
+from .filters import PostFilter
 from .pagination import BlogPagination, CoachPagination, NewsPagination
 from .serializers import CoachSerializer, NewsSerializer, PostSerializer
 
@@ -22,7 +22,7 @@ class CoachViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Coach.objects.all()
     serializer_class = CoachSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['directions__slug',]
+    filterset_fields = ['directions__slug', ]
     pagination_class = CoachPagination
 
 
@@ -43,21 +43,8 @@ class PostListViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = Post.objects.all()
     serializer_class = PostSerializer
     pagination_class = BlogPagination
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['tags__name']
-
-    def get_queryset(self):
-        queryset = super().get_queryset()
-        tag_names = self.request.query_params.getlist('tags__name')
-
-        if tag_names:
-            tag_ids = Tag.objects.filter(name__in=tag_names).values_list(
-                'id', flat=True)
-            post_ids = TagPost.objects.filter(tag_id__in=tag_ids).values_list(
-                'post_id', flat=True).distinct()
-            queryset = queryset.filter(id__in=post_ids)
-
-        return queryset
+    filter_backends = [DjangoFilterBackend, ]
+    filterset_class = PostFilter
 
 
 @api_view()

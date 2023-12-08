@@ -8,18 +8,20 @@ class ContentPostInline(admin.TabularInline):
     extra = 1
 
 
+class TagPostInline(admin.TabularInline):
+    model = TagPost
+    extra = 1
+
+
 class PostAdmin(admin.ModelAdmin):
     list_display = ('pk',
                     'text',
                     'short_description',
                     'publication_date',
-                    'get_tags',)
+                    )
     list_filter = ('publication_date',)
     empty_value_display = '-empty-'
-    inlines = [ContentPostInline]
-
-    def get_tags(self, obj):
-        return ",".join([str(p) for p in obj.tags.all()])
+    inlines = [ContentPostInline, TagPostInline]
 
 
 class ContentPostAdmin(admin.ModelAdmin):
