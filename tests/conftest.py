@@ -1,12 +1,103 @@
 import pytest
-
 from rest_framework.test import APIClient
+
+from coaches.models import Coach, Direction
+from news.models import ContentNews, News
 
 
 @pytest.fixture(scope="function")
 def api_client() -> APIClient:
-    """
-    Fixture to provide an API client
-    :return: APIClient
-    """
+    '''
+    Фикстура для использования APIClient.
+    '''
     yield APIClient()
+
+
+@pytest.fixture(scope="function")
+def create_coaches(db) -> list[Coach]:
+    '''
+    Фикстура для создания тестовых направлений и тренеров.
+
+    '''
+    Direction.objects.bulk_create([
+        Direction(title='бокс', slug='box'),
+        Direction(title='лыжи', slug='ski'),
+        Direction(title='биатлон', slug='biathlon')
+    ])
+
+    test_coach_1 = Coach.objects.create(
+            surname = 'Поддубный',
+            name = 'Иван',
+            patronymic = 'Максимович',
+            birthday = '1871-10-08',
+            achievements = 'Шестикратный чемпион мира',
+            photo = '',
+    )
+    test_coach_1.directions.add(
+        Direction.objects.get(slug='box'),
+    )
+
+    test_coach_2 = Coach.objects.create(
+            surname = 'Тихонов',
+            name = 'Александр',
+            patronymic = 'Иванович',
+            birthday = '1947-01-02',
+            achievements = 'Четырехкратный олимпийский чемпион',
+            photo = '',
+    )
+    test_coach_2.directions.add(
+        Direction.objects.get(slug='ski'),
+        Direction.objects.get(slug='biathlon')
+    )
+
+    test_coach_3 = Coach.objects.create(
+            surname = 'Белоцерковская',
+            name = 'Юлия',
+            patronymic = 'Николаевна',
+            birthday = '1985-07-05',
+            achievements = ('Чемпионка мира по лыжным гонкам ',
+                            'и по боксу в легком весе'),
+            photo = '',
+    )
+    test_coach_3.directions.add(
+        Direction.objects.get(slug='ski'),
+        Direction.objects.get(slug='box')
+    )
+
+    return [test_coach_1, test_coach_2, test_coach_3]
+  
+  
+@pytest.fixture(scope="function")
+def create_news(db) -> list[News]:
+    """
+    Фикстура для создания тестовых новсотей.
+    """
+    news_1 = News.objects.create(
+            title='Новость 1',
+            description='Особо важная 1',
+            date_published='2023-12-07T07:01:21Z',
+    )
+    news_2 = News.objects.create(
+            title='Новость 2',
+            description='Особо важная 2',
+            date_published='2023-12-07T07:01:22Z',
+    )
+    contentnews_1 = ContentNews.objects.create(
+        news=news_1,
+        image="test_image1.jpg",
+        title_photo="Test Title 1",
+        author_photo="Test Author 1",
+        )
+    contentnews_2 = ContentNews.objects.create(
+        news=news_2,
+        image="test_image2.jpg",
+        title_photo="Test Title 2",
+        author_photo="Test Author 2",
+        )
+    contentnews_3 = ContentNews.objects.create(
+        news=news_2,
+        image="test_image3.jpg",
+        title_photo="Test Title 3",
+        author_photo="Test Author 3",
+        )
+    return [news_1, news_2, contentnews_1, contentnews_2, contentnews_3]
