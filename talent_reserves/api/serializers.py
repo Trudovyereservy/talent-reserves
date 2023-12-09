@@ -5,12 +5,6 @@ from coaches.models import Coach
 from news.models import ContentNews, News
 
 
-class TagSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Tag
-        fields = ('name',)
-
-
 class ContentPostSerializer(serializers.ModelSerializer):
     class Meta:
         model = ContentPost
@@ -18,17 +12,20 @@ class ContentPostSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    tags = TagSerializer(many=True, read_only=True)
+    tags = serializers.SerializerMethodField()
     images = ContentPostSerializer(many=True, read_only=True)
 
     class Meta:
         model = Post
-        fields = '__all__'
+        exclude = ('created_at', 'updated_at')
 
     def get_images(self, obj):
         content_posts = obj.images.all()
         serializer = ContentPostSerializer(content_posts, many=True)
         return [item['image'].name for item in serializer.data]
+
+    def get_tags(self, obj):
+        return [tag.name for tag in obj.tags.all()]
 
 
 class ContentNewsSerializer(serializers.ModelSerializer):
