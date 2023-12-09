@@ -1,10 +1,10 @@
 from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
-from rest_framework import status, viewsets
+from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 
-from blog.models import Post, Tag, TagPost
+from blog.models import Post
 from coaches.models import Coach
 from news.models import News
 
