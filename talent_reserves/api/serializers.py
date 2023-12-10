@@ -1,7 +1,31 @@
 from rest_framework import serializers
 
+from blog.models import Post, ContentPost
 from coaches.models import Coach
 from news.models import ContentNews, News
+
+
+class ContentPostSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ContentPost
+        fields = ('image',)
+
+
+class PostSerializer(serializers.ModelSerializer):
+    tags = serializers.SerializerMethodField()
+    images = ContentPostSerializer(many=True, read_only=True)
+
+    class Meta:
+        model = Post
+        exclude = ('created_at', 'updated_at')
+
+    def get_images(self, obj):
+        content_posts = obj.images.all()
+        serializer = ContentPostSerializer(content_posts, many=True)
+        return [item['image'].name for item in serializer.data]
+
+    def get_tags(self, obj):
+        return [tag.name for tag in obj.tags.all()]
 
 
 class ContentNewsSerializer(serializers.ModelSerializer):

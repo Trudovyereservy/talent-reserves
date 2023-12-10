@@ -20,6 +20,23 @@
 <details>
 <summary>Установка и запуск проекта</summary>
 
+* Клонировать репозиторий и перейти в него в командной строке:
+```
+git clone https://github.com/Trudovyereservy/backend.git
+```
+
+* В корне проекта создать файл .env и заполнить его по образцу из файла .env.example
+
+* Запустить Докер:
+```
+docker-compose up -d --build
+```
+
+* Документация к API доступна по ссылке:
+```
+http://127.0.0.1:8000/doc/
+```
+
 </details>
 
 <details>

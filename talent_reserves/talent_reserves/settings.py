@@ -11,6 +11,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
+    'blog.apps.BlogConfig',
     'coaches.apps.CoachesConfig',
     'news.apps.NewsConfig',
     'django.contrib.admin',
@@ -63,7 +64,7 @@ DATABASES = {
         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'postgres'),
         'HOST': os.getenv('DB_HOST', 'localhost'),
         'PORT': os.getenv('DB_PORT', 5432)
-    }
+    },
 }
 
 

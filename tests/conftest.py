@@ -1,6 +1,8 @@
 import pytest
+
 from rest_framework.test import APIClient
 
+from blog.models import Post, Tag
 from coaches.models import Coach, Direction
 from news.models import ContentNews, News
 
@@ -26,24 +28,24 @@ def create_coaches(db) -> list[Coach]:
     ])
 
     test_coach_1 = Coach.objects.create(
-            surname = 'Поддубный',
-            name = 'Иван',
-            patronymic = 'Максимович',
-            birthday = '1871-10-08',
-            achievements = 'Шестикратный чемпион мира',
-            photo = '',
+        surname='Поддубный',
+        name='Иван',
+        patronymic='Максимович',
+        birthday='1871-10-08',
+        achievements='Шестикратный чемпион мира',
+        photo='',
     )
     test_coach_1.directions.add(
         Direction.objects.get(slug='box'),
     )
 
     test_coach_2 = Coach.objects.create(
-            surname = 'Тихонов',
-            name = 'Александр',
-            patronymic = 'Иванович',
-            birthday = '1947-01-02',
-            achievements = 'Четырехкратный олимпийский чемпион',
-            photo = '',
+        surname='Тихонов',
+        name='Александр',
+        patronymic='Иванович',
+        birthday='1947-01-02',
+        achievements='Четырехкратный олимпийский чемпион',
+        photo='',
     )
     test_coach_2.directions.add(
         Direction.objects.get(slug='ski'),
@@ -51,13 +53,13 @@ def create_coaches(db) -> list[Coach]:
     )
 
     test_coach_3 = Coach.objects.create(
-            surname = 'Белоцерковская',
-            name = 'Юлия',
-            patronymic = 'Николаевна',
-            birthday = '1985-07-05',
-            achievements = ('Чемпионка мира по лыжным гонкам ',
-                            'и по боксу в легком весе'),
-            photo = '',
+        surname='Белоцерковская',
+        name='Юлия',
+        patronymic='Николаевна',
+        birthday='1985-07-05',
+        achievements=('Чемпионка мира по лыжным гонкам ',
+                      'и по боксу в легком весе'),
+        photo='',
     )
     test_coach_3.directions.add(
         Direction.objects.get(slug='ski'),
@@ -65,8 +67,8 @@ def create_coaches(db) -> list[Coach]:
     )
 
     return [test_coach_1, test_coach_2, test_coach_3]
-  
-  
+
+
 @pytest.fixture(scope="function")
 def create_news(db) -> list[News]:
     """
@@ -101,3 +103,41 @@ def create_news(db) -> list[News]:
         author_photo="Test Author 3",
         )
     return [news_1, news_2, contentnews_1, contentnews_2, contentnews_3]
+
+
+@pytest.fixture(scope="function")
+def create_posts(db):
+    '''Fixture to create posts.'''
+    Tag.objects.bulk_create([
+        Tag(name='events', slug='events'),
+        Tag(name='exercises', slug='exercises')
+    ])
+
+    test_post1 = Post.objects.create(
+        text='В воскресенье, 15 декабря 2023 года, состоятся соревнования.',
+        short_description='Соревнования',
+        publication_date='2023-11-20',
+    )
+    test_post1.tags.add(
+        Tag.objects.get(name='events'),
+    )
+
+    test_post2 = Post.objects.create(
+        text='Упражнения для укрепления мышц спины',
+        short_description='Мышцы спины',
+        publication_date='2023-11-30',
+    )
+    test_post2.tags.add(
+        Tag.objects.get(name='exercises'),
+    )
+
+    test_post3 = Post.objects.create(
+        text='5 декабря наша команда едет на соревнования в Москву.',
+        short_description='Соревнования в Москве',
+        publication_date='2023-11-20',
+    )
+    test_post3.tags.add(
+        Tag.objects.get(name='events'),
+    )
+
+    return [test_post1, test_post2, test_post3]
