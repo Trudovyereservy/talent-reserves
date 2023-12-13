@@ -1,6 +1,7 @@
 import django_filters.rest_framework as django_filters
 
 from blog.models import Post
+from coaches.models import Coach
 
 
 class ListFilter(django_filters.Filter):
@@ -17,3 +18,11 @@ class PostFilter(django_filters.FilterSet):
     class Meta:
         model = Post
         fields = ('tags',)
+
+
+class CoachFilter(django_filters.FilterSet):
+    directions = ListFilter(field_name='directions__slug', lookup_expr='in')
+
+    class Meta:
+        model = Coach
+        fields = ('directions',)
