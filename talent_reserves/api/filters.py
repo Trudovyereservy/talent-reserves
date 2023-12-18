@@ -21,8 +21,8 @@ class PostFilter(django_filters.FilterSet):
 
 
 class CoachFilter(django_filters.FilterSet):
-    directions = ListFilter(field_name='directions__slug', lookup_expr='in')
+    direction_id = ListFilter(field_name='directions__pk', lookup_expr='in')
 
     class Meta:
         model = Coach
-        fields = ('directions',)
+        fields = ('direction_id',)
