@@ -8,7 +8,7 @@ from blog.models import Post
 from coaches.models import Coach
 from news.models import News
 
-from .filters import PostFilter
+from .filters import PostFilter, CoachFilter
 from .pagination import BlogPagination, CoachPagination, NewsPagination
 from .serializers import CoachSerializer, NewsSerializer, PostSerializer
 
@@ -21,9 +21,9 @@ class CoachViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = Coach.objects.all()
     serializer_class = CoachSerializer
-    filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['directions__slug', ]
     pagination_class = CoachPagination
+    filter_backends = [DjangoFilterBackend, ]
+    filterset_class = CoachFilter
 
 
 class NewsViewSet(viewsets.ReadOnlyModelViewSet):
