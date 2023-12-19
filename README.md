@@ -25,7 +25,7 @@
 git clone https://github.com/Trudovyereservy/backend.git
 ```
 
-* В корне проекта создать файл .env и заполнить его по образцу из файла .env.example
+* В корне проекта создать файл .env и скопировать туда данные из файла .env.local
 
 * Запустить Докер:
 ```

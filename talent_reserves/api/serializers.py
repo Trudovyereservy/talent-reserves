@@ -1,8 +1,14 @@
 from rest_framework import serializers
 
-from blog.models import Post, ContentPost
+from blog.models import Post, ContentPost, Tag
 from coaches.models import Coach
 from news.models import ContentNews, News
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ('id', 'name',)
 
 
 class ContentPostSerializer(serializers.ModelSerializer):
@@ -12,7 +18,7 @@ class ContentPostSerializer(serializers.ModelSerializer):
 
 
 class PostSerializer(serializers.ModelSerializer):
-    tags = serializers.SerializerMethodField()
+    tags = TagSerializer(many=True, read_only=True)
     images = ContentPostSerializer(many=True, read_only=True)
 
     class Meta:

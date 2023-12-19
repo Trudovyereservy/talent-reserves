@@ -4,16 +4,16 @@ from blog.models import Post
 from coaches.models import Coach
 
 
-class ListFilter(django_filters.Filter):
+class IntegerListFilter(django_filters.BaseInFilter,
+                        django_filters.NumberFilter):
     def filter(self, qs, value):
         if not value:
             return qs
-        value_list = value.split(',')
-        return qs.filter(**{f'{self.field_name}__in': value_list})
+        return qs.filter(**{f'{self.field_name}__in': value})
 
 
 class PostFilter(django_filters.FilterSet):
-    tags = ListFilter(field_name='tags__name', lookup_expr='in')
+    tags = IntegerListFilter(field_name='tags__pk', lookup_expr='in')
 
     class Meta:
         model = Post
@@ -21,7 +21,10 @@ class PostFilter(django_filters.FilterSet):
 
 
 class CoachFilter(django_filters.FilterSet):
-    directions = ListFilter(field_name='directions__slug', lookup_expr='in')
+    directions = IntegerListFilter(
+        field_name='directions__pk',
+        lookup_expr='in'
+    )
 
     class Meta:
         model = Coach
