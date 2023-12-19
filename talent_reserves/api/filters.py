@@ -13,11 +13,11 @@ class IntegerListFilter(django_filters.BaseInFilter,
 
 
 class PostFilter(django_filters.FilterSet):
-    tags = IntegerListFilter(field_name='tags__pk', lookup_expr='in')
+    tags_ids = IntegerListFilter(field_name='tags__pk', lookup_expr='in')
 
     class Meta:
         model = Post
-        fields = ('tags',)
+        fields = ('tags_ids',)
 
 
 class CoachFilter(django_filters.FilterSet):
