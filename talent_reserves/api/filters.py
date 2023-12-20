@@ -21,7 +21,8 @@ class PostFilter(django_filters.FilterSet):
 
 
 class CoachFilter(django_filters.FilterSet):
-    directions = IntegerListFilter(field_name='directions__pk', lookup_expr='in')
+    directions = IntegerListFilter(
+        field_name='directions__pk', lookup_expr='in')
 
     class Meta:
         model = Coach
