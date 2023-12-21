@@ -9,6 +9,7 @@ class News(models.Model):
         max_length=120
         )
     description = models.TextField()
+    tags = models.ManyToManyField('CommonTag', through='TagNews')
     date_published = models.DateTimeField(
         help_text='Дата и время публикации (с отсрочкой)'
     )
@@ -57,3 +58,38 @@ class ContentNews(models.Model):
 
     def __str__(self):
         return self.news.title
+
+
+class CommonTag(models.Model):
+    """Model of tags"""
+
+    name = models.CharField(
+        max_length=254,
+        unique=True,
+    )
+    slug = models.SlugField(
+        unique=True,
+    )
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        ordering = ['name']
+        verbose_name = 'tag'
+        verbose_name_plural = 'tags'
+
+    def __str__(self):
+        return self.name
+
+
+class TagNews(models.Model):
+    """Модель для связи тегов и новостей"""
+
+    tag = models.ForeignKey(CommonTag, on_delete=models.CASCADE)
+    news = models.ForeignKey(News, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'tag news'
+        verbose_name_plural = 'tag news'

@@ -8,7 +8,7 @@ from blog.models import Post
 from coaches.models import Coach
 from news.models import News
 
-from .filters import PostFilter, CoachFilter
+from .filters import PostFilter, CoachFilter, NewsFilter
 from .pagination import BlogPagination, CoachPagination, NewsPagination
 from .serializers import CoachSerializer, NewsSerializer, PostSerializer
 
@@ -31,6 +31,8 @@ class NewsViewSet(viewsets.ReadOnlyModelViewSet):
     queryset = News.objects.all()
     serializer_class = NewsSerializer
     pagination_class = NewsPagination
+    filter_backends = [DjangoFilterBackend, ]
+    filterset_class = NewsFilter
 
     def get_queryset(self):
         current_datetime = timezone.now()
