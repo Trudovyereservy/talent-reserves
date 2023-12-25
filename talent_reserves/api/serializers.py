@@ -1,8 +1,14 @@
 from rest_framework import serializers
 
 from blog.models import Post, ContentPost
-from coaches.models import Coach
-from news.models import ContentNews, News
+from coaches.models import Coach, Direction
+from news.models import ContentNews, News, CommonTag
+
+
+class CommonTagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = CommonTag
+        fields = ['id', 'name']
 
 
 class ContentPostSerializer(serializers.ModelSerializer):
@@ -36,10 +42,11 @@ class ContentNewsSerializer(serializers.ModelSerializer):
 
 class NewsSerializer(serializers.ModelSerializer):
     images = ContentNewsSerializer(many=True, read_only=True)
+    tags = CommonTagSerializer(many=True, read_only=True)
 
     class Meta:
         model = News
-        fields = ['id', 'title', 'description',
+        fields = ['id', 'title', 'description', 'tags',
                   'date_published', 'images']
 
     def to_representation(self, instance):
@@ -57,14 +64,20 @@ class NewsSerializer(serializers.ModelSerializer):
         return representation
 
 
+class DirectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Direction
+        fields = ['id', 'title']
+
+
 class CoachSerializer(serializers.ModelSerializer):
     """
     Сериализатор дя вывода информации о тренерах.
     Выводятся все поля, за исключением birthday.
     """
-    directions = serializers.StringRelatedField(many=True)
+    directions = DirectionSerializer(many=True, read_only=True)
 
     class Meta:
         model = Coach
-        fields = ['surname', 'name', 'patronymic',
+        fields = ['id', 'surname', 'name', 'patronymic',
                   'achievements', 'directions', 'photo']
