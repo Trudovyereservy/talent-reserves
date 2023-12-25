@@ -23,6 +23,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_spectacular',
     'django_filters',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -109,3 +110,10 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
+
+DEFAULT_FILE_STORAGE = 'yandex_s3_storage.ClientDocsStorage'
+YANDEX_CLIENT_DOCS_BUCKET_NAME = 'client-docs'
+AWS_ACCESS_KEY_ID = 'AWS_ACCESS_KEY'
+AWS_SECRET_ACCESS_KEY = 'AWS_SECRET_ACCESS_KEY'
+AWS_S3_ENDPOINT_URL = 'https://storage.yandexcloud.net'
+AWS_S3_REGION_NAME = 'storage'

@@ -8,7 +8,7 @@ from blog.models import Post
 from coaches.models import Coach
 from news.models import News
 
-from .filters import PostFilter, CoachFilter
+from .filters import CoachFilter, PostFilter
 from .pagination import BlogPagination, CoachPagination, NewsPagination
 from .serializers import CoachSerializer, NewsSerializer, PostSerializer
 

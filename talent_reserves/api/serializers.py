@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from blog.models import Post, ContentPost
+from blog.models import ContentPost, Post
 from coaches.models import Coach
 from news.models import ContentNews, News
 
