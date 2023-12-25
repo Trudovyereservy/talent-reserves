@@ -2,10 +2,12 @@ import django_filters.rest_framework as django_filters
 
 from blog.models import Post
 from coaches.models import Coach
+from news.models import News
 
 
 class IntegerListFilter(django_filters.BaseInFilter,
                         django_filters.NumberFilter):
+
     def filter(self, qs, value):
         if not value:
             return qs
@@ -21,9 +23,17 @@ class PostFilter(django_filters.FilterSet):
 
 
 class CoachFilter(django_filters.FilterSet):
-    directions = IntegerListFilter(
-        field_name='directions__pk', lookup_expr='in')
+    direction_ids = IntegerListFilter(field_name='directions__pk',
+                                      lookup_expr='in')
 
     class Meta:
         model = Coach
-        fields = ('directions',)
+        fields = ('direction_ids',)
+
+
+class NewsFilter(django_filters.FilterSet):
+    tags_ids = IntegerListFilter(field_name='tags__pk', lookup_expr='in')
+
+    class Meta:
+        model = News
+        fields = ('tags_ids',)
