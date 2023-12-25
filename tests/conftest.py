@@ -119,8 +119,8 @@ def create_news(db) -> list[News]:
 def create_posts(db):
     '''Fixture to create posts.'''
     Tag.objects.bulk_create([
-        Tag(name='events', slug='events'),
-        Tag(name='exercises', slug='exercises')
+        Tag(id=1, name='events', slug='events'),
+        Tag(id=2, name='exercises', slug='exercises')
     ])
 
     test_post1 = Post.objects.create(
@@ -129,7 +129,7 @@ def create_posts(db):
         publication_date='2023-11-20',
     )
     test_post1.tags.add(
-        Tag.objects.get(name='events'),
+        Tag.objects.get(id=1),
     )
 
     test_post2 = Post.objects.create(
@@ -138,7 +138,7 @@ def create_posts(db):
         publication_date='2023-11-30',
     )
     test_post2.tags.add(
-        Tag.objects.get(name='exercises'),
+        Tag.objects.get(id=2),
     )
 
     test_post3 = Post.objects.create(
@@ -147,7 +147,7 @@ def create_posts(db):
         publication_date='2023-11-20',
     )
     test_post3.tags.add(
-        Tag.objects.get(name='events'),
+        Tag.objects.get(id=1),
     )
 
     return [test_post1, test_post2, test_post3]
