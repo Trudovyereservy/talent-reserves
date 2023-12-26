@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ContentNews, News, TagNews, CommonTag
+from .models import ContentNews, News, TagNews
 
 
 class ContentNewsInline(admin.TabularInline):
@@ -37,12 +37,6 @@ class ContentNewsAdmin(admin.ModelAdmin):
     get_news_title.short_description = 'News Title'
 
 
-class CommonTagAdmin(admin.ModelAdmin):
-    list_display = ('pk', 'name', 'slug',)
-    list_filter = ('name',)
-    empty_value_display = '-empty-'
-
-
 class TagNewsAdmin(admin.ModelAdmin):
     list_display = ('tag',)
 
@@ -50,4 +44,3 @@ class TagNewsAdmin(admin.ModelAdmin):
 admin.site.register(News, NewsAdmin)
 admin.site.register(ContentNews, ContentNewsAdmin)
 admin.site.register(TagNews, TagNewsAdmin)
-admin.site.register(CommonTag, CommonTagAdmin)

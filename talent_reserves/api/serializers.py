@@ -2,13 +2,7 @@ from rest_framework import serializers
 
 from blog.models import Post, ContentPost, Tag
 from coaches.models import Coach, Direction
-from news.models import ContentNews, News, CommonTag
-
-
-class CommonTagSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = CommonTag
-        fields = ['id', 'name']
+from news.models import ContentNews, News
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -48,7 +42,7 @@ class ContentNewsSerializer(serializers.ModelSerializer):
 
 class NewsSerializer(serializers.ModelSerializer):
     images = ContentNewsSerializer(many=True, read_only=True)
-    tags = CommonTagSerializer(many=True, read_only=True)
+    tags = TagSerializer(many=True, read_only=True)
 
     class Meta:
         model = News
