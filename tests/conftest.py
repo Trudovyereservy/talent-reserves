@@ -4,7 +4,7 @@ from rest_framework.test import APIClient
 
 from blog.models import Post, Tag
 from coaches.models import Coach, Direction
-from news.models import ContentNews, News, CommonTag
+from news.models import ContentNews, News
 
 
 @pytest.fixture(scope="function")
@@ -74,9 +74,9 @@ def create_news(db) -> list[News]:
     """
     Фикстура для создания тестовых новсотей.
     """
-    CommonTag.objects.bulk_create([
-        CommonTag(id=1, name='Новости дня', slug='daily_news'),
-        CommonTag(id=2, name='Спортивные события', slug='sport_events')
+    Tag.objects.bulk_create([
+        Tag(id=1, name='Новости дня', slug='daily_news'),
+        Tag(id=2, name='Спортивные события', slug='sport_events')
     ])
     news_1 = News.objects.create(
             title='Новость 1',
@@ -84,7 +84,7 @@ def create_news(db) -> list[News]:
             date_published='2023-12-07T07:01:21Z',
     )
     news_1.tags.add(
-        CommonTag.objects.get(id=1),
+        Tag.objects.get(id=1),
     )
     news_2 = News.objects.create(
             title='Новость 2',
@@ -92,7 +92,7 @@ def create_news(db) -> list[News]:
             date_published='2023-12-07T07:01:22Z',
     )
     news_2.tags.add(
-        CommonTag.objects.get(id=1),
+        Tag.objects.get(id=1),
     )
     contentnews_1 = ContentNews.objects.create(
         news=news_1,
