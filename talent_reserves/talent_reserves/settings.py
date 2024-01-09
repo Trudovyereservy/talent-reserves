@@ -14,6 +14,7 @@ INSTALLED_APPS = [
     'blog.apps.BlogConfig',
     'coaches.apps.CoachesConfig',
     'news.apps.NewsConfig',
+    'feedback.apps.FeedbackConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -109,3 +110,12 @@ SPECTACULAR_SETTINGS = {
     'VERSION': '1.0.0',
     'SERVE_INCLUDE_SCHEMA': False,
 }
+
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.mail.ru'
+EMAIL_PORT = 2525
+EMAIL_HOST_USER = 'your_email@mail.ru' # Замените на адрес ящика А
+EMAIL_HOST_PASSWORD = 'your_password' # Введите пароль для ящика А
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
