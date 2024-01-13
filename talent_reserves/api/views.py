@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
@@ -75,7 +76,7 @@ class FeedbackViewSet(CreateViewSet):
                 f'Name: {instance.name}\nEmail:'
                 f'{instance.email}\nTopic: {instance.subject}\nMessage:'
                 f'{instance.message}',
-                'your_email@mail.ru',  # Адрес ящика А
-                ['recipient_email@mail.ru'],  # Адрес ящика Б
+                settings.EMAIL_HOST_USER,
+                [settings.EMAIL_RECIPIENT],
                 fail_silently=False,
             )
