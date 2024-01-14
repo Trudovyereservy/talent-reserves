@@ -1,5 +1,5 @@
 from django.db import models
-from yandex_s3_storage import ClientDocsStorage
+from talent_reserves.yandex_s3_storage import ClientDocsStorage
 
 
 class News(models.Model):
