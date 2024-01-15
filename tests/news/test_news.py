@@ -72,3 +72,13 @@ def test_pagination_news(api_client: APIClient):
     data2 = response2.json()
     results2 = data2['results']
     assert len(results2) == 6
+
+
+@pytest.mark.django_db
+def test_tags_filtration(api_client: APIClient,
+                         create_news: list[News],):
+    """Тестирование фильтрации тегов."""
+    response = api_client.get('/news/?tags_ids=1')
+    data = response.json()
+
+    assert len(data['results']) == 2

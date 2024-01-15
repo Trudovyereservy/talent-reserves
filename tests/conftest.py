@@ -20,9 +20,9 @@ def create_coaches(db) -> list[Coach]:
 
     '''
     Direction.objects.bulk_create([
-        Direction(title='бокс', slug='box'),
-        Direction(title='лыжи', slug='ski'),
-        Direction(title='биатлон', slug='biathlon')
+        Direction(id=1, title='бокс', slug='box'),
+        Direction(id=2, title='лыжи', slug='ski'),
+        Direction(id=3, title='биатлон', slug='biathlon')
     ])
 
     test_coach_1 = Coach.objects.create(
@@ -34,7 +34,7 @@ def create_coaches(db) -> list[Coach]:
         photo='',
     )
     test_coach_1.directions.add(
-        Direction.objects.get(slug='box'),
+        Direction.objects.get(id=1),
     )
 
     test_coach_2 = Coach.objects.create(
@@ -46,8 +46,8 @@ def create_coaches(db) -> list[Coach]:
         photo='',
     )
     test_coach_2.directions.add(
-        Direction.objects.get(slug='ski'),
-        Direction.objects.get(slug='biathlon')
+        Direction.objects.get(id=2),
+        Direction.objects.get(id=3)
     )
 
     test_coach_3 = Coach.objects.create(
@@ -60,8 +60,8 @@ def create_coaches(db) -> list[Coach]:
         photo='',
     )
     test_coach_3.directions.add(
-        Direction.objects.get(slug='ski'),
-        Direction.objects.get(slug='box')
+        Direction.objects.get(id=2),
+        Direction.objects.get(id=1)
     )
 
     return [test_coach_1, test_coach_2, test_coach_3]
@@ -72,15 +72,25 @@ def create_news(db) -> list[News]:
     """
     Фикстура для создания тестовых новсотей.
     """
+    Tag.objects.bulk_create([
+        Tag(id=1, name='Новости дня', slug='daily_news'),
+        Tag(id=2, name='Спортивные события', slug='sport_events')
+    ])
     news_1 = News.objects.create(
             title='Новость 1',
             description='Особо важная 1',
             date_published='2023-12-07T07:01:21Z',
     )
+    news_1.tags.add(
+        Tag.objects.get(id=1),
+    )
     news_2 = News.objects.create(
             title='Новость 2',
             description='Особо важная 2',
             date_published='2023-12-07T07:01:22Z',
+    )
+    news_2.tags.add(
+        Tag.objects.get(id=1),
     )
     contentnews_1 = ContentNews.objects.create(
         news=news_1,
@@ -107,8 +117,8 @@ def create_news(db) -> list[News]:
 def create_posts(db):
     '''Fixture to create posts.'''
     Tag.objects.bulk_create([
-        Tag(name='events', slug='events'),
-        Tag(name='exercises', slug='exercises')
+        Tag(id=1, name='events', slug='events'),
+        Tag(id=2, name='exercises', slug='exercises')
     ])
 
     test_post1 = Post.objects.create(
@@ -117,7 +127,7 @@ def create_posts(db):
         publication_date='2023-11-20',
     )
     test_post1.tags.add(
-        Tag.objects.get(name='events'),
+        Tag.objects.get(id=1),
     )
 
     test_post2 = Post.objects.create(
@@ -126,7 +136,7 @@ def create_posts(db):
         publication_date='2023-11-30',
     )
     test_post2.tags.add(
-        Tag.objects.get(name='exercises'),
+        Tag.objects.get(id=2),
     )
 
     test_post3 = Post.objects.create(
@@ -135,7 +145,7 @@ def create_posts(db):
         publication_date='2023-11-20',
     )
     test_post3.tags.add(
-        Tag.objects.get(name='events'),
+        Tag.objects.get(id=1),
     )
 
     return [test_post1, test_post2, test_post3]

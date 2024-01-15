@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import ContentNews, News
+from .models import ContentNews, News, TagNews
 
 
 class ContentNewsInline(admin.TabularInline):
@@ -8,10 +8,15 @@ class ContentNewsInline(admin.TabularInline):
     extra = 1
 
 
+class TagNewsInline(admin.TabularInline):
+    model = TagNews
+    extra = 1
+
+
 class NewsAdmin(admin.ModelAdmin):
     list_display = ('title', 'short_description', 'date_published',
                     'created_at', 'updated_at')
-    inlines = [ContentNewsInline]
+    inlines = [ContentNewsInline, TagNewsInline]
 
     def short_description(self, obj):
         if len(obj.description) > 50:
@@ -32,5 +37,10 @@ class ContentNewsAdmin(admin.ModelAdmin):
     get_news_title.short_description = 'News Title'
 
 
+class TagNewsAdmin(admin.ModelAdmin):
+    list_display = ('tag',)
+
+
 admin.site.register(News, NewsAdmin)
 admin.site.register(ContentNews, ContentNewsAdmin)
+admin.site.register(TagNews, TagNewsAdmin)

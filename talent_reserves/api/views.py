@@ -9,6 +9,8 @@ from rest_framework.response import Response
 
 from .filters import CoachFilter, PostFilter
 from .pagination import BlogPagination, CoachPagination, NewsPagination
+from .filters import PostFilter, CoachFilter, NewsFilter
+from .pagination import CommonPagination
 from .serializers import CoachSerializer, NewsSerializer, PostSerializer
 
 
@@ -20,7 +22,7 @@ class CoachViewSet(viewsets.ReadOnlyModelViewSet):
     """
     queryset = Coach.objects.all()
     serializer_class = CoachSerializer
-    pagination_class = CoachPagination
+    pagination_class = CommonPagination
     filter_backends = [DjangoFilterBackend, ]
     filterset_class = CoachFilter
 
@@ -29,7 +31,9 @@ class NewsViewSet(viewsets.ReadOnlyModelViewSet):
     """Вьюсет для отображения списка новостей."""
     queryset = News.objects.all()
     serializer_class = NewsSerializer
-    pagination_class = NewsPagination
+    pagination_class = CommonPagination
+    filter_backends = [DjangoFilterBackend, ]
+    filterset_class = NewsFilter
 
     def get_queryset(self):
         current_datetime = timezone.now()
@@ -41,7 +45,7 @@ class PostListViewSet(viewsets.ReadOnlyModelViewSet):
     """Вьюсет для работы с постами."""
     queryset = Post.objects.all()
     serializer_class = PostSerializer
-    pagination_class = BlogPagination
+    pagination_class = CommonPagination
     filter_backends = [DjangoFilterBackend, ]
     filterset_class = PostFilter
 
