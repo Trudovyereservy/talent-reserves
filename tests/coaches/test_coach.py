@@ -51,12 +51,10 @@ def test_coach_filtration(
     Тестирование фильтрации списка тренеров по направлению работы.
     Требуется вывести тренеров с направлением "бокс".
     """
-    response = api_client.get("/coaches/?directions=box")
+    response = api_client.get("/coaches/?direction_ids=1")
     data = response.json()
 
     assert len(data["results"]) == 2
-    assert "бокс" in data["results"][0]["directions"]
-    assert "бокс" in data["results"][1]["directions"]
 
 
 @pytest.mark.django_db

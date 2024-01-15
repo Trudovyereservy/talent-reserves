@@ -29,7 +29,7 @@ def test_posts_pagination(api_client, create_posts):
 @pytest.mark.django_db
 def test_tags_filtration(api_client, create_posts):
     """Тестирование фильтрации тегов."""
-    response = api_client.get('/post/?tags=events')
+    response = api_client.get('/post/?tags_ids=2')
     data = response.json()
 
-    assert len(data['results']) == 2
+    assert len(data['results']) == 1

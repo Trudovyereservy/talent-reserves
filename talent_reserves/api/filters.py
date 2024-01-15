@@ -2,27 +2,38 @@ import django_filters.rest_framework as django_filters
 
 from blog.models import Post
 from coaches.models import Coach
+from news.models import News
 
 
-class ListFilter(django_filters.Filter):
+class IntegerListFilter(django_filters.BaseInFilter,
+                        django_filters.NumberFilter):
+
     def filter(self, qs, value):
         if not value:
             return qs
-        value_list = value.split(',')
-        return qs.filter(**{f'{self.field_name}__in': value_list})
+        return qs.filter(**{f'{self.field_name}__in': value})
 
 
 class PostFilter(django_filters.FilterSet):
-    tags = ListFilter(field_name='tags__name', lookup_expr='in')
+    tags_ids = IntegerListFilter(field_name='tags__pk', lookup_expr='in')
 
     class Meta:
         model = Post
-        fields = ('tags',)
+        fields = ('tags_ids',)
 
 
 class CoachFilter(django_filters.FilterSet):
-    directions = ListFilter(field_name='directions__slug', lookup_expr='in')
+    direction_ids = IntegerListFilter(field_name='directions__pk',
+                                      lookup_expr='in')
 
     class Meta:
         model = Coach
-        fields = ('directions',)
+        fields = ('direction_ids',)
+
+
+class NewsFilter(django_filters.FilterSet):
+    tags_ids = IntegerListFilter(field_name='tags__pk', lookup_expr='in')
+
+    class Meta:
+        model = News
+        fields = ('tags_ids',)

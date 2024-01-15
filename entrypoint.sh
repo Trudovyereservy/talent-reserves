@@ -11,9 +11,7 @@ sleep 2
 echo "--END MIGRATE--"
 
 echo "--START INIT DATA CREATION--"
-cp -r ./fixtures/images/coaches/ ./media
-cp -r ./fixtures/images/photo_news/ ./media
-cp -r ./fixtures/images/posts/ ./media
+cp -r ./fixtures/images/ ./media
 sleep 1
 python manage.py loaddata fixtures/data.json
 sleep 2

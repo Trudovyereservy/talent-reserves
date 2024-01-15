@@ -1,6 +1,8 @@
 from django.db import models
 from talent_reserves.yandex_s3_storage import ClientDocsStorage
 
+from blog.models import Tag
+
 
 class News(models.Model):
     """
@@ -10,6 +12,7 @@ class News(models.Model):
         max_length=120
         )
     description = models.TextField()
+    tags = models.ManyToManyField('blog.Tag', through='TagNews')
     date_published = models.DateTimeField(
         help_text='Дата и время публикации (с отсрочкой)'
     )
@@ -59,3 +62,16 @@ class ContentNews(models.Model):
 
     def __str__(self):
         return self.news.title
+
+
+class TagNews(models.Model):
+    """Модель для связи тегов и новостей"""
+
+    tag = models.ForeignKey(Tag, on_delete=models.CASCADE)
+    news = models.ForeignKey(News, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'tag news'
+        verbose_name_plural = 'tag news'
