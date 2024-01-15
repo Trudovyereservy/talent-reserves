@@ -94,19 +94,19 @@ def create_news(db) -> list[News]:
     )
     contentnews_1 = ContentNews.objects.create(
         news=news_1,
-        image="test_image1.jpg",
+        # image="test_image1.jpg",
         title_photo="Test Title 1",
         author_photo="Test Author 1",
         )
     contentnews_2 = ContentNews.objects.create(
         news=news_2,
-        image="test_image2.jpg",
+        # image="test_image2.jpg",
         title_photo="Test Title 2",
         author_photo="Test Author 2",
         )
     contentnews_3 = ContentNews.objects.create(
         news=news_2,
-        image="test_image3.jpg",
+        # image="test_image3.jpg",
         title_photo="Test Title 3",
         author_photo="Test Author 3",
         )
