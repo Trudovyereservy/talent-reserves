@@ -1,5 +1,4 @@
 import django_filters.rest_framework as django_filters
-
 from blog.models import Post
 from coaches.models import Coach
 
