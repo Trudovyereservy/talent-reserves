@@ -9,8 +9,7 @@ from coaches.models import Coach
 from news.models import News
 
 from .filters import CoachFilter, NewsFilter, PostFilter
-from .pagination import (BlogPagination, CoachPagination, CommonPagination,
-                         NewsPagination)
+from .pagination import CommonPagination
 from .serializers import CoachSerializer, NewsSerializer, PostSerializer
 
 
