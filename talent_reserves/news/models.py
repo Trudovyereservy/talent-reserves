@@ -1,8 +1,7 @@
 from django.db import models
 
-from talent_reserves.yandex_s3_storage import ClientDocsStorage
-
 from blog.models import Tag
+from talent_reserves.yandex_s3_storage import ClientDocsStorage
 
 
 class News(models.Model):

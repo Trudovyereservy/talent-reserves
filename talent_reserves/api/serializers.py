@@ -1,9 +1,8 @@
-from blog.models import ContentPost, Post
-from coaches.models import Coach
-from blog.models import Post, ContentPost, Tag
+from rest_framework import serializers
+
+from blog.models import ContentPost, Post, Tag
 from coaches.models import Coach, Direction
 from news.models import ContentNews, News
-from rest_framework import serializers
 
 
 class TagSerializer(serializers.ModelSerializer):
