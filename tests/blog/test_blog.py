@@ -1,5 +1,4 @@
 import pytest
-from blog.models import ContentPost, Post, Tag, TagPost
 
 
 @pytest.mark.django_db

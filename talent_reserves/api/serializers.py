@@ -2,6 +2,7 @@ from rest_framework import serializers
 
 from blog.models import ContentPost, Post, Tag
 from coaches.models import Coach, Direction
+from feedback.models import Feedback
 from news.models import ContentNews, News
 
 
@@ -81,3 +82,9 @@ class CoachSerializer(serializers.ModelSerializer):
         model = Coach
         fields = ['id', 'surname', 'name', 'patronymic',
                   'achievements', 'directions', 'photo']
+
+
+class FeedbackSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feedback
+        fields = ['id', 'name', 'email', 'subject', 'message', 'created_at']
