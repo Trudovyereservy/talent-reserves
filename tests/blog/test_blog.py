@@ -1,7 +1,5 @@
 import pytest
 
-from blog.models import Post, Tag, TagPost, ContentPost
-
 
 @pytest.mark.django_db
 def test_get_post_list(api_client):
