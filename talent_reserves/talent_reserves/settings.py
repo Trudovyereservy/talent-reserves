@@ -128,5 +128,5 @@ YANDEX_CLIENT_DOCS_BUCKET_NAME = 'talent-reserves'
 
 s3 = boto3.client(service_name='s3' )
 
-aws_access_key_id = os.environ['AWS_ACCESS_KEY_ID']
-aws_secret_access_key = os.environ['AWS_SECRET_ACCESS_KEY']
+aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID', default=' ')
+aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY', default=' ')
