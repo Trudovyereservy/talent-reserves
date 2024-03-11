@@ -1,6 +1,7 @@
 from django.db import models
 
 from blog.models import Tag
+from talent_reserves.yandex_s3_storage import ClientDocsStorage
 
 
 class News(models.Model):
@@ -38,7 +39,8 @@ class ContentNews(models.Model):
         on_delete=models.CASCADE
         )
     image = models.ImageField(
-        upload_to='photo_news/'
+        upload_to='photo_news/',
+        storage=ClientDocsStorage()
         )
     title_photo = models.CharField(
         max_length=120,

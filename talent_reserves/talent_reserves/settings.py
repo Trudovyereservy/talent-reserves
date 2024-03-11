@@ -1,4 +1,5 @@
 import os
+import boto3
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -24,6 +25,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'drf_spectacular',
     'django_filters',
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -120,3 +122,11 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_RECIPIENT = os.getenv('EMAIL_RECIPIENT')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
+
+DEFAULT_FILE_STORAGE = 'yandex_s3_storage.ClientDocsStorage'
+YANDEX_CLIENT_DOCS_BUCKET_NAME = 'talent-reserves'
+
+s3 = boto3.client(service_name='s3' )
+
+aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID', default=' ')
+aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY', default=' ')
