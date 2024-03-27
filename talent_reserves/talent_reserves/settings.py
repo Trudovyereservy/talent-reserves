@@ -1,5 +1,4 @@
 import os
-import boto3
 from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -123,11 +122,14 @@ EMAIL_RECIPIENT = os.getenv('EMAIL_RECIPIENT')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-DEFAULT_FILE_STORAGE = 'talent_reserves.yandex_s3_storage.ClientDocsStorage'
+
+# Yandex Cloud
+DEFAULT_FILE_STORAGE = 'talent_reserves.yandex_s3_storage.ClientMediaStorage'
 YANDEX_CLIENT_DOCS_BUCKET_NAME = os.getenv('YANDEX_BUCKET_NAME', default=' ') 
-
-s3 = boto3.client(service_name='s3' )
-
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', default=' ')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', default=' ')
-AWS_S3_CUSTOM_DOMAIN = f'{YANDEX_CLIENT_DOCS_BUCKET_NAME}.storage.yandexcloud.net' 
+YANDEX_CLOUD_DOMAIN = 'storage.yandexcloud.net'
+AWS_S3_CUSTOM_DOMAIN = f'{YANDEX_CLIENT_DOCS_BUCKET_NAME}.{YANDEX_CLOUD_DOMAIN}' 
+#AWS_S3_REGION_NAME =  'storage'
+AWS_S3_ENDPOINT_URL = f'https://{YANDEX_CLOUD_DOMAIN}'
+YANDEX_PUBLIC_MEDIA_LOCATION = 'media/'
