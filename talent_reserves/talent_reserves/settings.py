@@ -123,10 +123,11 @@ EMAIL_RECIPIENT = os.getenv('EMAIL_RECIPIENT')
 EMAIL_USE_TLS = True
 EMAIL_USE_SSL = False
 
-DEFAULT_FILE_STORAGE = 'yandex_s3_storage.ClientDocsStorage'
-YANDEX_CLIENT_DOCS_BUCKET_NAME = 'talent-reserves'
+DEFAULT_FILE_STORAGE = 'talent_reserves.yandex_s3_storage.ClientDocsStorage'
+YANDEX_CLIENT_DOCS_BUCKET_NAME = os.getenv('YANDEX_BUCKET_NAME', default=' ') 
 
 s3 = boto3.client(service_name='s3' )
 
-aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID', default=' ')
-aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY', default=' ')
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', default=' ')
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', default=' ')
+AWS_S3_CUSTOM_DOMAIN = f'{YANDEX_CLIENT_DOCS_BUCKET_NAME}.storage.yandexcloud.net' 
