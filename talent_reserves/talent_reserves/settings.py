@@ -4,11 +4,11 @@ from pathlib import Path
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('SECRET_KEY', default=' ')
+SECRET_KEY = os.getenv('SECRET_KEY', default='django-insecure-key')
 
-DEBUG = True
+DEBUG = os.getenv('DEBUG', default='True') == 'True'
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost', '0.0.0.0']
+ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", '*').split()
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
@@ -58,7 +58,6 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'talent_reserves.wsgi.application'
 
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -69,7 +68,6 @@ DATABASES = {
         'PORT': os.getenv('DB_PORT', 5432)
     },
 }
-
 
 AUTH_PASSWORD_VALIDATORS = [
     {
@@ -86,7 +84,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'UTC'
@@ -96,9 +93,11 @@ USE_I18N = True
 USE_TZ = True
 
 STATIC_URL = 'static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = BASE_DIR / 'mediafiles'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -126,7 +125,7 @@ EMAIL_USE_SSL = False
 DEFAULT_FILE_STORAGE = 'yandex_s3_storage.ClientDocsStorage'
 YANDEX_CLIENT_DOCS_BUCKET_NAME = 'talent-reserves'
 
-s3 = boto3.client(service_name='s3' )
+s3 = boto3.client(service_name='s3')
 
 aws_access_key_id = os.getenv('AWS_ACCESS_KEY_ID', default=' ')
 aws_secret_access_key = os.getenv('AWS_SECRET_ACCESS_KEY', default=' ')
