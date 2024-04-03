@@ -1,7 +1,8 @@
 import pytest
 from django.core.paginator import Paginator
-from news.models import ContentNews, News
 from rest_framework.test import APIClient
+
+from news.models import ContentNews, News
 
 
 @pytest.mark.django_db

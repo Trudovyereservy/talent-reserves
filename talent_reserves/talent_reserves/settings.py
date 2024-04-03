@@ -1,6 +1,7 @@
 import os
-import boto3
 from pathlib import Path
+
+import boto3
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -94,7 +95,6 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'mediafiles'
