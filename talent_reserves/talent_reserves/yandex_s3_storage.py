@@ -14,3 +14,4 @@ class ClientMediaStorage(S3Boto3Storage):
     bucket_name = YANDEX_CLIENT_DOCS_BUCKET_NAME
     location = YANDEX_PUBLIC_MEDIA_LOCATION
     file_overwrite = False
+    secure_urls = True
