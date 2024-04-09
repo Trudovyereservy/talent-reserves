@@ -78,5 +78,5 @@ class FeedbackViewSet(CreateViewSet):
                 f'{instance.message}',
                 settings.EMAIL_HOST_USER,
                 [settings.EMAIL_RECIPIENT],
-                fail_silently=False,
+                fail_silently=False
             )

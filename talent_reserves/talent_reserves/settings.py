@@ -112,24 +112,22 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
 }
 
-# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = os.getenv('EMAIL_HOST')
 EMAIL_PORT = os.getenv('EMAIL_PORT')
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_RECIPIENT = os.getenv('EMAIL_RECIPIENT')
-EMAIL_USE_TLS = True
-EMAIL_USE_SSL = False
-
+EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', False) == 'True'
+EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', False) == 'True'
 
 # Yandex Cloud
-DEFAULT_FILE_STORAGE = 'talent_reserves.yandex_s3_storage.ClientMediaStorage'
-YANDEX_CLIENT_DOCS_BUCKET_NAME = os.getenv('YANDEX_BUCKET_NAME', default=' ') 
+YANDEX_BUCKET_NAME = os.getenv('YANDEX_BUCKET_NAME', default=' ') 
+DEFAULT_FILE_STORAGE = f'{YANDEX_BUCKET_NAME}.yandex_s3_storage.ClientMediaStorage'
 AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', default=' ')
 AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', default=' ')
 YANDEX_CLOUD_DOMAIN = 'storage.yandexcloud.net'
-AWS_S3_CUSTOM_DOMAIN = f'{YANDEX_CLIENT_DOCS_BUCKET_NAME}.{YANDEX_CLOUD_DOMAIN}' 
+AWS_S3_CUSTOM_DOMAIN = f'{YANDEX_BUCKET_NAME}.{YANDEX_CLOUD_DOMAIN}' 
 #AWS_S3_REGION_NAME =  'storage'
 AWS_S3_ENDPOINT_URL = f'https://{YANDEX_CLOUD_DOMAIN}'
 YANDEX_PUBLIC_MEDIA_LOCATION = 'media/'
