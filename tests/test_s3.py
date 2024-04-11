@@ -21,4 +21,4 @@ def test_connection_s3():
     except botocore.exceptions.ClientError as e:
         error_code = int(e.response['Error']['Code'])
         # 403 - нет доступа/ 404 - не существует
-        assert error_code == 404
+        assert error_code == 404, 'Отсутствует доступ к bucket'
