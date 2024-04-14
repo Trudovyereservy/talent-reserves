@@ -1,6 +1,6 @@
 name: Deployment pull request workflow
 on:
-  pull_request:
+  push:
     branches:
       - deployment
 
