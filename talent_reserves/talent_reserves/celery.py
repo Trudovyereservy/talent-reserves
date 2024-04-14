@@ -9,5 +9,3 @@ app = Celery("talent_reserves")
 app.config_from_object("django.conf:settings", namespace="CELERY")
 
 app.autodiscover_tasks()
-
-#TESTING WORKFLOW
