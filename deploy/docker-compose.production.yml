@@ -22,6 +22,17 @@ services:
     depends_on:
       - db
 
+  celery:
+    build: ../talent_reserves
+    command: celery -A talent_reserves worker -l INFO
+    env_file: ../.env
+    depends_on:
+      - backend
+      - redis
+
+  redis:
+    image: "redis:alpine"
+
   nginx:
     image: nginx:1.19.3
     ports:
