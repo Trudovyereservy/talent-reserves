@@ -1,8 +1,8 @@
-name: Main pull request workflow
+name: Deployment pull request workflow
 on:
   pull_request:
     branches:
-      - main
+      - deployment
 
 jobs:
   tests:
@@ -38,3 +38,21 @@ jobs:
       run: |
         python -m flake8 talent_reserves/
         pytest
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v3
+    - name: Executing ssh commands to deploy
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.HOST }}
+        username: ${{ secrets.USER }}
+        key: ${{ secrets.SSH_KEY }}
+        passphrase: ${{ secrets.SSH_PASSPHRASE }}
+        script: |
+          cd backend/deploy
+          sudo docker compose -f docker-compose.production.yml down -v
+          sudo docker compose -f docker-compose.production.yml up -d
+          sudo docker compose -f docker-compose.production.yml exec backend python manage.py migrate
+          sudo docker compose -f docker-compose.production.yml exec backend python manage.py collectstatic --noinput
