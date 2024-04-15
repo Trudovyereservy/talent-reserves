@@ -51,8 +51,9 @@ jobs:
         key: ${{ secrets.SSH_KEY }}
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         script: |
-          echo "${{ secrets.SSH_KEY }}" > ~/.ssh/id_rsa
           cd backend/deploy
+          ssh-agent -s
+          ssh-add
           git pull
           docker compose -f docker-compose.production.yml down -v
           docker compose -f docker-compose.production.yml up -d
