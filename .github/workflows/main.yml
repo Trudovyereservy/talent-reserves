@@ -43,8 +43,11 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
-    - name: Debug SSH connection
-      run: ssh -Tv ${{ secrets.USER }}@${{ secrets.HOST }}
+    - name: Setup SSH and Pull Repository
+      run: |
+        eval "$(ssh-agent -s)"
+        echo "${{ secrets.SSH_KEY }}" | ssh-add -
+        ssh -Tv ${{ secrets.USER }}@${{ secrets.HOST }}
     - name: Executing ssh commands to deploy
       uses: appleboy/ssh-action@master
       with:
@@ -54,8 +57,6 @@ jobs:
         passphrase: ${{ secrets.SSH_PASSPHRASE }}
         script: |
           cd backend/deploy
-          eval "$(ssh-agent -s)"
-          ssh-add
           git pull
           docker compose -f docker-compose.production.yml down -v
           docker compose -f docker-compose.production.yml up -d
