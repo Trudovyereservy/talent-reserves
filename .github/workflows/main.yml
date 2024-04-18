@@ -43,17 +43,12 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
-#     - name: Setup SSH Keys and known_hosts
-#       env:
-#         SSH_AUTH_SOCK: /tmp/ssh_agent.sock
-#       run: |
-#         ssh-agent -a $SSH_AUTH_SOCK > /dev/null
-#         ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
-    - name: Setup SSH and Pull Repository
+    - name: Setup SSH Keys and known_hosts
+      env:
+        SSH_AUTH_SOCK: /tmp/ssh_agent.sock
       run: |
-        eval "$(ssh-agent -s)"
-        echo "${{ secrets.SSH_PRIVATE_KEY }}" | ssh-add -
-        ssh -Tv ${{ secrets.USER }}@${{ secrets.HOST }}
+        ssh-agent -a $SSH_AUTH_SOCK > /dev/null
+        ssh-add - <<< "${{ secrets.SSH_PRIVATE_KEY }}"
     - name: Executing ssh commands to deploy
       uses: appleboy/ssh-action@master
       with:
