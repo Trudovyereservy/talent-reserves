@@ -1,5 +1,7 @@
 from django.db import models
 
+from talent_reserves.yandex_s3_storage import ClientMediaStorage
+
 
 class Post(models.Model):
     """Model of posts"""
@@ -59,6 +61,7 @@ class ContentPost(models.Model):
     )
     image = models.ImageField(
         upload_to='posts/',
+        storage=ClientMediaStorage(),
         blank=True
     )
     created_at = models.DateTimeField(auto_now_add=True)
