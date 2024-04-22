@@ -2,6 +2,7 @@ from django.db import models
 
 from talent_reserves.yandex_s3_storage import ClientMediaStorage
 
+
 class Post(models.Model):
     """Model of posts"""
     text = models.TextField()
