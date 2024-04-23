@@ -10,12 +10,13 @@ python manage.py migrate
 sleep 2
 echo "--END MIGRATE--"
 
-echo "--START INIT DATA CREATION--"
-cp -r ./fixtures/images/ ./media
-sleep 1
-python manage.py loaddata fixtures/data.json
-sleep 2
-echo "--END INIT DATA CREATION--"
+# Нужно ли это?
+#echo "--START INIT DATA CREATION--"
+#cp -r ./fixtures/images/ ./media
+#sleep 1
+#python manage.py loaddata fixtures/data.json
+#sleep 2
+#echo "--END INIT DATA CREATION--"
 
 echo "--START CREATE SUPER USER--"
 export DJANGO_SUPERUSER_EMAIL=admin@admin.com
