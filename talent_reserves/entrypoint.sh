@@ -1,10 +1,5 @@
 #!/bin/bash
 
-echo "--START MAKEMIGRATIONS--"
-python manage.py makemigrations
-sleep 2
-echo "--END MAKEMIGRATIONS--"
-
 echo "--START MIGRATE--"
 python manage.py migrate
 sleep 2
