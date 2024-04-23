@@ -54,7 +54,7 @@ jobs:
             echo AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} >> .env
             echo AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} >> .env
             echo EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }} >> .env
-            echo SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }}
+            echo SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }} >> .env
             cd backend/deploy
             git pull
             docker compose -f docker-compose.production.yml down -v
