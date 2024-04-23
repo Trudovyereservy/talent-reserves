@@ -49,13 +49,14 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
+            cd backend
+            git pull
             echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} > .env
             echo POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} >> .env
             echo AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }} >> .env
             echo AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }} >> .env
             echo EMAIL_HOST_PASSWORD=${{ secrets.EMAIL_HOST_PASSWORD }} >> .env
             echo SECRET_KEY=${{ secrets.DJANGO_SECRET_KEY }} >> .env
-            cd backend/deploy
-            git pull
+            cd deploy
             docker compose -f docker-compose.production.yml down -v
             docker compose -f docker-compose.production.yml up --build -d
