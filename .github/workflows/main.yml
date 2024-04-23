@@ -41,7 +41,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Executing remote ssh commands to set env
+      - name: Executing remote ssh commands to deploy
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST }}
