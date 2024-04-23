@@ -29,7 +29,6 @@ services:
     env_file: ../.env
     depends_on:
       - backend
-      - redis
 
   redis:
     image: "redis:alpine"

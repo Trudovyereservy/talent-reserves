@@ -1,22 +1,11 @@
 #!/bin/bash
 
-echo "--START MIGRATE--"
-python manage.py migrate
-sleep 2
-echo "--END MIGRATE--"
+set -e
 
-echo "--START INIT DATA CREATION--"
-cp -r ./fixtures/images/ ./media
-sleep 1
-python manage.py loaddata fixtures/data.json
-sleep 2
-echo "--END INIT DATA CREATION--"
+echo "${0}: running migrations."
+python manage.py makemigrations --merge
+python manage.py migrate --noinput
 
-echo "--START CREATE SUPER USER--"
-export DJANGO_SUPERUSER_EMAIL=admin@admin.com
-export DJANGO_SUPERUSER_USERNAME=admin
-export DJANGO_SUPERUSER_PASSWORD=admin
-python manage.py createsuperuser --no-input
-echo "--END CREATE SUPER USER--"
+echo "${0}: collecting statics."
 
-exec "$@"
+python manage.py collectstatic --noinput
