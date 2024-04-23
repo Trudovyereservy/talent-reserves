@@ -58,4 +58,4 @@ jobs:
             cd backend/deploy
             git pull
             docker compose -f docker-compose.production.yml down -v
-            docker compose -f docker-compose.production.yml up -d
+            docker compose -f docker-compose.production.yml up --build -d
