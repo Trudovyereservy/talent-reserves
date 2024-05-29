@@ -126,10 +126,10 @@ EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', False) == 'True'
 EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', False) == 'True'
 
 # Yandex Cloud
-YANDEX_BUCKET_NAME = os.getenv('YANDEX_BUCKET_NAME', default=' ')
+YANDEX_BUCKET_NAME = os.getenv('YANDEX_BUCKET_NAME', default='talent-reserves')
 DEFAULT_FILE_STORAGE = f'{YANDEX_BUCKET_NAME}.yandex_s3_storage.ClientMediaStorage'
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', default=' ')
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', default=' ')
+AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', default="YCAJEsm0n9UIiQY09UvgvwuOo")
+AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', default="YCN8lOA6BQGHb7Trj49sTt-xYSOjDa9XIdIA7eQz")
 YANDEX_CLOUD_DOMAIN = 'storage.yandexcloud.net'
 AWS_S3_CUSTOM_DOMAIN = f'{YANDEX_BUCKET_NAME}.{YANDEX_CLOUD_DOMAIN}'
 # AWS_S3_REGION_NAME =  'storage'
