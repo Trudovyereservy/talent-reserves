@@ -1,16 +1,17 @@
 import os
 from pathlib import Path
-
+ 
 import boto3
 from django.core.management.utils import get_random_secret_key
 
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = os.getenv('SECRET_KEY', default=get_random_secret_key())
+SECRET_KEY = os.environ.get('SECRET_KEY', default=get_random_secret_key())
 
-DEBUG = os.getenv('DEBUG', default='True') == 'True'
+DEBUG = os.environ.get('DEBUG', default='True') == 'True'
 
-ALLOWED_HOSTS = os.getenv("DJANGO_ALLOWED_HOSTS", '*').split()
+ALLOWED_HOSTS = os.environ.get("DJANGO_ALLOWED_HOSTS", '*').split()
 
 INSTALLED_APPS = [
     'api.apps.ApiConfig',
@@ -63,11 +64,11 @@ WSGI_APPLICATION = 'talent_reserves.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('POSTGRES_DB', 'postgres3'),
-        'USER': os.getenv('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'postgres'),
-        'HOST': os.getenv('DB_HOST', 'localhost'),
-        'PORT': os.getenv('DB_PORT', 5432)
+        'NAME': os.environ.get('POSTGRES_DB', 'postgres3'),
+        'USER': os.environ.get('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.environ.get('POSTGRES_PASSWORD', 'postgres'),
+        'HOST': os.environ.get('DB_HOST', 'localhost'),
+        'PORT': os.environ.get('DB_PORT', 5432)
     },
 }
 
@@ -113,23 +114,23 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
 }
 
-CELERY_BROKER_URL = os.getenv('CELERY_BROKER', 'redis://localhost:6379/0')
-CELERY_RESULT_BACKEND = os.getenv('CELERY_BACKEND', 'redis://localhost:6379/0')
+CELERY_BROKER_URL = os.environ.get('CELERY_BROKER', 'redis://localhost:6379/0')
+CELERY_RESULT_BACKEND = os.environ.get('CELERY_BACKEND', 'redis://localhost:6379/0')
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = os.getenv('EMAIL_HOST')
-EMAIL_PORT = os.getenv('EMAIL_PORT')
-EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
-EMAIL_RECIPIENT = os.getenv('EMAIL_RECIPIENT')
-EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', False) == 'True'
-EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', False) == 'True'
+EMAIL_HOST = os.environ.get('EMAIL_HOST')
+EMAIL_PORT = os.environ.get('EMAIL_PORT')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_RECIPIENT = os.environ.get('EMAIL_RECIPIENT')
+EMAIL_USE_TLS = os.environ.get('EMAIL_USE_TLS', False) == 'True'
+EMAIL_USE_SSL = os.environ.get('EMAIL_USE_SSL', False) == 'True'
 
 # Yandex Cloud
-YANDEX_BUCKET_NAME = os.getenv('YANDEX_BUCKET_NAME', default='talent-reserves')
+YANDEX_BUCKET_NAME = os.environ.get('YANDEX_BUCKET_NAME', default='talent-reserves')
 DEFAULT_FILE_STORAGE = f'{YANDEX_BUCKET_NAME}.yandex_s3_storage.ClientMediaStorage'
-AWS_ACCESS_KEY_ID = os.getenv('AWS_ACCESS_KEY_ID', default="YCAJEsm0n9UIiQY09UvgvwuOo")
-AWS_SECRET_ACCESS_KEY = os.getenv('AWS_SECRET_ACCESS_KEY', default="YCN8lOA6BQGHb7Trj49sTt-xYSOjDa9XIdIA7eQz")
+AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')#, default="YCAJEsm0n9UIiQY09UvgvwuOo")
+AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')#, default="YCN8lOA6BQGHb7Trj49sTt-xYSOjDa9XIdIA7eQz")
 YANDEX_CLOUD_DOMAIN = 'storage.yandexcloud.net'
 AWS_S3_CUSTOM_DOMAIN = f'{YANDEX_BUCKET_NAME}.{YANDEX_CLOUD_DOMAIN}'
 # AWS_S3_REGION_NAME =  'storage'
