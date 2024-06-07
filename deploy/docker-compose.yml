@@ -9,9 +9,16 @@ services:
       - pg_data:/var/lib/postgresql/data
     ports:
       - "5432:5432"
+    networks:
+        - db_network
 
   redis:
-    image: "redis:alpine"
+    restart: always
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - db_network
 
   backend:
     build: ../talent_reserves
@@ -22,6 +29,9 @@ services:
       - redis
     ports:
       - "8000:8000"
+    networks:
+      - db_network
+    
 
   celery:
     build: ../talent_reserves
@@ -30,3 +40,8 @@ services:
     depends_on:
       - backend
       - redis
+    networks:
+      - db_network
+
+networks:
+  db_network:
