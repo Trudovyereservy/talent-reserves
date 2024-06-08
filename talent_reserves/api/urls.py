@@ -3,7 +3,7 @@ from rest_framework.routers import DefaultRouter
 
 from .views import (CoachViewSet, FeedbackViewSet, NewsViewSet,
                     PostListViewSet, get_ok)
-
+app_name = 'api'
 router = DefaultRouter()
 
 router.register('coaches', CoachViewSet)

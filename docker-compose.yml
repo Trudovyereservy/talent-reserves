@@ -26,8 +26,7 @@ services:
       - redis
     networks:
       - db_network
-    ports:
-      - '8000:8000'
+  
 
   celery:
     build: talent_reserves
@@ -43,6 +42,19 @@ services:
     image: redis:latest
     ports:
       - "6379:6379"
+    networks:
+      - db_network
+  
+  nginx:
+    image: nginx:alpine
+    ports:
+      - 8000:80 
+    volumes:
+      - ./conf.d:/etc/nginx/conf.d
+      - static_value:/var/html/static/
+      - media_value:/var/html/media/
+    depends_on:
+      - backend
     networks:
       - db_network
 
