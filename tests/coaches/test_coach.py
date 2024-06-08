@@ -11,7 +11,7 @@ def test_coach_list(
     """
     Тестирование доступности эндпоинта со списком тренеров.
     """
-    response = api_client.get("/coaches/")
+    response = api_client.get("/api/coaches/")
     assert response.status_code == 200
 
 
@@ -23,7 +23,7 @@ def test_coach_id(
     """
     Тестирование доступности эндпоинта c конкретным тренером.
     """
-    response = api_client.get("/coaches/2/")
+    response = api_client.get("/api/coaches/2/")
     assert response.status_code == 200
     assert response.json()["name"] == "Александр"
 
@@ -37,7 +37,7 @@ def test_coach_pagination(
     Тестирование пагинации списка тренеров.
     Требуется вывести - 2 тренера.
     """
-    response = api_client.get("/coaches/?limit=2")
+    response = api_client.get("/api/coaches/?limit=2")
     data = response.json()
 
     assert len(data["results"]) == 2
@@ -52,7 +52,7 @@ def test_coach_filtration(
     Тестирование фильтрации списка тренеров по направлению работы.
     Требуется вывести тренеров с направлением "бокс".
     """
-    response = api_client.get("/coaches/?direction_ids=1")
+    response = api_client.get("/api/coaches/?direction_ids=1")
     data = response.json()
 
     assert len(data["results"]) == 2
@@ -66,7 +66,7 @@ def test_coach_surname(
     """
     Тестирование поля "фамилия" в списке тренеров.
     """
-    response = api_client.get("/coaches/")
+    response = api_client.get("/api/coaches/")
     data = response.json()
 
     assert data["results"][2]["surname"] == "Белоцерковская"
