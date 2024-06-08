@@ -1,0 +1,57 @@
+
+
+services:
+  db:
+    image: postgres:alpine
+    env_file: .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - db_network
+
+  backend:
+    build:
+      context: talent_reserves
+      dockerfile: Dockerfile
+    command: gunicorn talent_reserves.wsgi:application --bind 0:8000
+    env_file:
+      - .env
+    volumes:
+      - static_value:/app/static/
+      - media_value:/app/media/
+    depends_on:
+      - db
+      - redis
+    networks:
+      - db_network
+    ports:
+      - '8000:8000'
+
+  celery:
+    build: talent_reserves
+    command: celery -A talent_reserves worker -l INFO
+    env_file: .env
+    depends_on:
+      - backend
+    networks:
+      - db_network
+
+  redis:
+    restart: always
+    image: redis:latest
+    ports:
+      - "6379:6379"
+    networks:
+      - db_network
+
+
+
+networks:
+  db_network:
+
+volumes:
+  pg_data:
+  static_value:
+  media_value:
