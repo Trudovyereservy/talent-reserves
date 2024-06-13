@@ -26,7 +26,7 @@ class CoachAdmin(admin.ModelAdmin):
         )
 
     list_display = ["photography", "surname", "name", "patronymic",
-                    "direction", "achievements", "birthday"]
+                    "achievements", "birthday"]
     list_display_links = ["surname",]
     list_filter = ["directions",]
     ordering = ["surname"]

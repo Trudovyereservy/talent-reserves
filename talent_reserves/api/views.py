@@ -1,5 +1,3 @@
-from django.conf import settings
-from django.core.mail import send_mail
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
@@ -18,6 +16,7 @@ from .mixins import CreateViewSet
 from .pagination import CommonPagination
 from .serializers import (CoachSerializer, FeedbackSerializer, NewsSerializer,
                           PostSerializer)
+from talent_reserves.tasks import send_feedback_email_task
 
 
 class CoachViewSet(viewsets.ReadOnlyModelViewSet):
@@ -71,12 +70,5 @@ class FeedbackViewSet(CreateViewSet):
     @receiver(post_save, sender=Feedback)
     def send_feedback_email(sender, instance, created, **kwargs):
         if created:
-            send_mail(
-                'New Feedback Received',
-                f'Name: {instance.name}\nEmail:'
-                f'{instance.email}\nTopic: {instance.subject}\nMessage:'
-                f'{instance.message}',
-                settings.EMAIL_HOST_USER,
-                [settings.EMAIL_RECIPIENT],
-                fail_silently=False
-            )
+            send_feedback_email_task.delay()
+            print(3, created)

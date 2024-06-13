@@ -6,7 +6,7 @@ from drf_spectacular.views import (SpectacularAPIView, SpectacularRedocView,
                                    SpectacularSwaggerView)
 
 urlpatterns = [
-    path('', include('api.urls')),
+    path('api/', include('api.urls', namespace='api')),
     path('admin/', admin.site.urls),
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     path('doc/', SpectacularSwaggerView.as_view(
@@ -15,6 +15,5 @@ urlpatterns = [
         url_name='schema'), name='redoc'),
 ]
 
-if settings.DEBUG:
-    urlpatterns += static(settings.MEDIA_URL,
-                          document_root=settings.MEDIA_ROOT)
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
