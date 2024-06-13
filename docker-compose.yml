@@ -42,6 +42,7 @@ services:
     image: redis:latest
     ports:
       - "6379:6379"
+    command: redis-server
     networks:
       - db_network
   
