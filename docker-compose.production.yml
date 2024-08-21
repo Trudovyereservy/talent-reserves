@@ -1,4 +1,12 @@
+version: '3.3'
 
+networks:
+  db_network:
+
+volumes:
+  pg_data:
+  static_value:
+  media_value:
 
 services:
   db:
@@ -12,12 +20,10 @@ services:
       - db_network
 
   backend:
-    build:
-      context: talent_reserves
-      dockerfile: Dockerfile
-    command: gunicorn talent_reserves.wsgi:application --bind 0:8000
-    env_file:
-      - .env
+    container_name: talent_reserves-back
+    image: leonid89/talent_reserves-back:latest
+    env_file: .env
+    # command: gunicorn talent_reserves.wsgi:application --bind 0:8000
     volumes:
       - static_value:/app/static/
       - media_value:/app/media/
@@ -45,25 +51,22 @@ services:
     networks:
       - db_network
   
+  frontend:
+    container_name: talent_reserves-front
+    image: leonid89/talent_reserves-front:latest
+    volumes:
+      - ../frontend/:/app/result_build/
+  
   nginx:
-    image: nginx:alpine
+    container_name: talent_reserves-proxy
+    image: leonid89/talent_reserves-proxy:latest
     ports:
       - 8000:80 
     volumes:
-      - ./conf.d:/etc/nginx/conf.d
+      - ../frontend/.next:/usr/share/nginx/html/
       - static_value:/var/html/static/
       - media_value:/var/html/media/
     depends_on:
       - backend
     networks:
       - db_network
-
-
-
-networks:
-  db_network:
-
-volumes:
-  pg_data:
-  static_value:
-  media_value:
