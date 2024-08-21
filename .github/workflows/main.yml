@@ -39,7 +39,7 @@ jobs:
         python -m flake8 talent_reserves/
         pytest
   build_backend_and_push_to_docker_hub:
-    name: Push Docker image to DockerHub
+    name: Push backend Docker image to DockerHub
     runs-on: ubuntu-latest
     needs: tests
     steps:
@@ -105,15 +105,15 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v3
-    - name: Copy docker-compose.yml via ssh
-      uses: appleboy/scp-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USER }}
-        key: ${{ secrets.SSH_KEY }}
-        passphrase: ${{ secrets.SSH_PASSPHRASE }}
-        source: "docker-compose.production.yml"
-        target: "talent_reserves"
+    # - name: docker-compose.production.yml via ssh
+    #   uses: appleboy/scp-action@master
+    #   with:
+    #     host: ${{ secrets.HOST }}
+    #     username: ${{ secrets.USER }}
+    #     key: ${{ secrets.SSH_KEY }}
+    #     passphrase: ${{ secrets.SSH_PASSPHRASE }}
+    #     source: "docker-compose.production.yml"
+    #     target: "talent_reserves"
     - name: Executing remote ssh commands to deploy
       uses: appleboy/ssh-action@master
       with:
