@@ -1,0 +1,108 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+$chevron: url('../../../public/chevron-arrows.svg');
+$chevron-grey: url('../../../public/chevron-arrows-grey.svg');
+
+.pagination {
+  max-width: 1440px;
+  margin-bottom: 100px;
+  padding: 0 140px;
+}
+
+.pagination__content {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 16px;
+  text-align: center;
+}
+
+.pagination__link {
+  padding: 25px;
+}
+
+@mixin chevron-background {
+  background-image: $chevron;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &_disabled {
+    background-image: $chevron-grey;
+  }
+}
+
+.pagination__chevron {
+  @include chevron-background;
+}
+
+.pagination__chevronInverse {
+  @include chevron-background;
+  transform: rotate(180deg);
+}
+
+.pagination__item {
+  width: 48px;
+  aspect-ratio: 1/1;
+  overflow: hidden;
+
+  border-width: 1px;
+  border-radius: 5px;
+  border-style: solid;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  border-color: $border-color-ligth-blue;
+  color: $text-color-blue;
+  background-color: transparent;
+
+  &_type_selected {
+    border-color: $border-color-red;
+    color: $text-color-white;
+    background-color: $bg-color-red;
+  }
+}
+
+.pagination__ellipsis {
+  width: 48px;
+  height: 48px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: $text-color-blue;
+}
+
+@include laptop {
+  .pagination {
+    max-width: 1024px;
+    padding: 0 42px;
+  }
+}
+
+@include tablet {
+  .pagination {
+    max-width: 494px;
+    padding: 0;
+    margin-inline: auto;
+  }
+  .pagination__ellipsis {
+    width: 20px;
+  }
+}
+
+@include mobile {
+  .pagination {
+    max-width: 394px;
+  }
+  .pagination__content {
+    align-items: center;
+    gap: 15px;
+  }
+}

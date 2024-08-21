@@ -7,7 +7,7 @@ import pictureLogoMobile from '@/../public/Mask group_394px.png';
 import { Button } from '@/components/Button/Button';
 import { buttonsNames } from '@/utils/constants';
 
-import styles from '../main-banner/main-banner.module.scss';
+import styles from './main-banner.module.scss';
 
 const MainBanner = () => (
   <div className={styles.mainbanner__wrapper}>
