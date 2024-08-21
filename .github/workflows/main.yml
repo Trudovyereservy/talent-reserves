@@ -49,8 +49,7 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
-            cd backend
             git pull
-            cd deploy
+            cd talent_reserves
             docker compose -f docker-compose.production.yml down -v
             docker compose -f docker-compose.production.yml up --build -d
