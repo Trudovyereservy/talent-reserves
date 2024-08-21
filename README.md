@@ -51,6 +51,7 @@ http://127.0.0.1:8000/doc/
 - [Вероника Лаптева](https://github.com/VeronikaLapteva)
 - [Виктория Латышева](https://github.com/vikkilat)
 - [Всеволод Зайковский](https://github.com/4lk4st)
+- [Леонид Агалаков](https://github.com/Leonid-Agalakov-89)
 
 
 </details>
