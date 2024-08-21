@@ -53,7 +53,6 @@ jobs:
           passphrase: ${{ secrets.SSH_PASSPHRASE }}
           script: |
             cd talent_reserves
-            git pull
-            cd talent_reserves
+            sudo git pull
             sudo docker compose -f docker-compose.production.yml down -v
             sudo docker compose -f docker-compose.production.yml up --build -d
