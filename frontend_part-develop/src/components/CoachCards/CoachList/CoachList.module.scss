@@ -1,0 +1,56 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.cardslist {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 40px 140px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: Roboto, sans-serif;
+}
+
+.cardslist__container {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px 40px;
+  padding: 0;
+  list-style-type: none;
+}
+
+@include laptop {
+  .cardslist {
+    max-width: 1024px;
+    padding: 15px 42px 100px;
+  }
+
+  .cardslist__container {
+    gap: 35px 20px;
+  }
+}
+
+@include tablet {
+  .cardslist {
+    max-width: 494px;
+    padding: 20px 47px 40px;
+  }
+
+  .cardslist__container {
+    flex-direction: column;
+  }
+}
+
+@include mobile {
+  .cardslist {
+    max-width: 394px;
+    padding: 15px 0px 69px;
+  }
+
+  .cardslist__container {
+    gap: 20px;
+    flex-direction: row;
+  }
+}

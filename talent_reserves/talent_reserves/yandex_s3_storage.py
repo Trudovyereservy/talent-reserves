@@ -1,7 +1,6 @@
 from storages.backends.s3boto3 import S3Boto3Storage
 
-from .settings import (YANDEX_BUCKET_NAME,
-                       YANDEX_PUBLIC_MEDIA_LOCATION)
+from .settings import YANDEX_BUCKET_NAME, YANDEX_PUBLIC_MEDIA_LOCATION
 
 
 class ClientDocsStorage(S3Boto3Storage):

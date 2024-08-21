@@ -1,0 +1,74 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.cardslist {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 140px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: Roboto, sans-serif;
+}
+
+.cardslist__title {
+  color: $text-color-blue;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.63418;
+  margin-bottom: 20px;
+}
+
+.cardslist__container {
+  width: 100%;
+  display: flex;
+  gap: 54px 40px;
+  // row-gap: 20px;
+  justify-content: center;
+
+  padding: 0;
+  list-style-type: none;
+  flex-wrap: wrap;
+}
+
+@include desktop {
+  .cardslist {
+    max-width: 1024px;
+    padding: 40px 42px;
+  }
+  .cardslist__title {
+    font-size: 55px;
+    letter-spacing: -1px;
+  }
+  .cardslist__container {
+    gap: 36px 20px;
+  }
+}
+
+@include tablet {
+  .cardslist {
+    padding: 20px 2% 40px 2%;
+  }
+  .cardslist__container {
+    gap: 2vw;
+  }
+}
+
+@include mobile {
+  .cardslist {
+    max-width: 394px;
+    padding: 20px 47px 40px;
+  }
+  .cardslist__title {
+    font-size: 34px;
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
+  }
+
+  .cardslist__container {
+    flex-direction: row;
+    gap: 22px 20px;
+  }
+}

@@ -1,9 +1,8 @@
-from rest_framework import serializers
-
 from blog.models import ContentPost, Post, Tag
 from coaches.models import Coach, Direction
 from feedback.models import Feedback
 from news.models import ContentNews, News
+from rest_framework import serializers
 
 
 class TagSerializer(serializers.ModelSerializer):
@@ -73,7 +72,7 @@ class DirectionSerializer(serializers.ModelSerializer):
 
 class CoachSerializer(serializers.ModelSerializer):
     """
-    Сериализатор дя вывода информации о тренерах.
+    Сериализатор для вывода информации о тренерах.
     Выводятся все поля, за исключением birthday.
     """
     directions = DirectionSerializer(many=True, read_only=True)

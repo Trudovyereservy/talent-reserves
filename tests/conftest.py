@@ -1,9 +1,8 @@
 import pytest
-from rest_framework.test import APIClient
-
 from blog.models import Post, Tag
 from coaches.models import Coach, Direction
 from news.models import ContentNews, News
+from rest_framework.test import APIClient
 
 
 @pytest.fixture(scope="function")

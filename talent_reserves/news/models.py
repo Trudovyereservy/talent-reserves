@@ -1,6 +1,5 @@
-from django.db import models
-
 from blog.models import Tag
+from django.db import models
 from talent_reserves.yandex_s3_storage import ClientMediaStorage
 
 
@@ -10,7 +9,7 @@ class News(models.Model):
     """
     title = models.CharField(
         max_length=120
-        )
+    )
     description = models.TextField()
     tags = models.ManyToManyField('blog.Tag', through='TagNews')
     date_published = models.DateTimeField(
@@ -37,22 +36,22 @@ class ContentNews(models.Model):
         News,
         related_name='images',
         on_delete=models.CASCADE
-        )
+    )
     image = models.ImageField(
         upload_to='photo_news/',
         storage=ClientMediaStorage()
-        )
+    )
     title_photo = models.CharField(
         max_length=120,
         blank=True, null=True,
-        )
+    )
     author_photo = models.CharField(
         max_length=50,
         blank=True, null=True
-        )
+    )
     date_photo = models.DateField(
         blank=True, null=True
-        )
+    )
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

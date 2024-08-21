@@ -1,0 +1,59 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.description__container {
+  margin: 0 auto;
+  margin-bottom: 49px;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 1160px / 4 + 10px);
+  min-height: 80px;
+  box-sizing: border-box;
+}
+
+.description__title {
+  font-size: 64px;
+  line-height: 104px;
+  font-weight: 700;
+  color: $text-color-blue;
+}
+
+.description__text {
+  font-size: 15px;
+  line-height: 20px;
+  font-weight: 400;
+}
+
+@include desktop {
+  .description__container {
+    width: calc(100% - 400px / 4 + 16px);
+  }
+
+  .description__title {
+    font-size: 55px;
+    line-height: 90px;
+  }
+}
+
+@include tablet {
+  .description__title {
+    font-size: 45px;
+    margin: 33px 0 12px;
+    line-height: 60px;
+  }
+}
+
+@include mobile {
+  .description__container {
+    width: calc(100% - 408px / 4 + 10px);
+  }
+
+  .description__title {
+    font-size: 34px;
+    line-height: 38px;
+  }
+
+  .description__text {
+    font-size: 14px;
+  }
+}

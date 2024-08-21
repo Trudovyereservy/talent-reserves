@@ -1,0 +1,38 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.feedbacks__title {
+  padding: 0 140px;
+  padding-bottom: 22px;
+  color: $bg-color-blue;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 163.418%;
+}
+
+@include laptop {
+  .feedbacks__title {
+    padding: 0 42px 22px;
+    font-size: 55px;
+  }
+}
+
+@include tablet {
+  .feedbacks__title {
+    padding: 0 40px 20px;
+    font-size: 34px;
+  }
+}
+
+@include pocketpc {
+  .feedbacks__title {
+    padding: 0 47px 27px;
+  }
+}
+
+@include mobile {
+  .feedbacks__title {
+    padding: 0 47px 27px;
+    font-size: 34px;
+  }
+}

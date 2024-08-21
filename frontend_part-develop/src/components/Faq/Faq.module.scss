@@ -1,0 +1,45 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.faq {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 140px 70px 140px;
+  box-sizing: border-box;
+  font-family: Roboto, sans-serif;
+}
+
+.faq__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0;
+  list-style-type: none;
+}
+
+.faq__title {
+  display: none;
+  color: $text-color-blue;
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.13188;
+  margin: 0 auto 30px;
+}
+
+@include laptop {
+  .faq {
+    padding: 40px 42px 100px 42px;
+  }
+}
+@include mobile {
+  .faq {
+    padding: 15px 46px 100px 48px;
+  }
+  .faq__title {
+    display: block;
+    margin: 0 auto 35px;
+  }
+}

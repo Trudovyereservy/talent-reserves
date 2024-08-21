@@ -1,0 +1,91 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.cardnews {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 140px 70px;
+}
+
+.cardslist__container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  list-style: none;
+  height: 100%;
+}
+
+.cardslist__title {
+  color: $text-color-blue;
+  font-size: 64px;
+  font-weight: 700;
+  line-height: 1.63418;
+  margin-bottom: 20px;
+}
+
+@include desktop {
+  .cardnews {
+    padding: 0 80px 60px;
+  }
+
+  .cardslist__container {
+    gap: 20px;
+  }
+}
+
+@include laptop {
+  .cardnews {
+    max-width: 1024px;
+    padding: 0 42px 112px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+
+  .cardslist__container {
+    flex-wrap: wrap;
+  }
+
+  .cardslist__title {
+    font-size: 55px;
+    margin-bottom: 22px;
+  }
+}
+
+@include tablet {
+  .cardnews {
+    padding: 0 0 50px;
+  }
+
+  .cardslist__title {
+    font-size: 34px;
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
+    padding: 0 42px;
+  }
+}
+
+@include mobile {
+  .cardnews {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    align-items: center;
+    padding: 0 0 55px;
+  }
+
+  .cardslist__container {
+    flex-direction: column;
+    width: 300px;
+    gap: 22px;
+  }
+
+  .cardslist__title {
+    width: 100%;
+    margin-bottom: 28px;
+    padding: 0;
+    letter-spacing: -0.1px;
+    align-self: flex-start;
+  }
+}

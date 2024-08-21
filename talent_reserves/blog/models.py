@@ -1,5 +1,4 @@
 from django.db import models
-
 from talent_reserves.yandex_s3_storage import ClientMediaStorage
 
 

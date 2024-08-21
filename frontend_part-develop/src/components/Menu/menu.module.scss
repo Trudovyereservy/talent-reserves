@@ -1,0 +1,159 @@
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  background-color: #202020;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(100%);
+}
+
+.menu_active {
+  transform: translate(50%);
+}
+
+.menu__overlay {
+  width: 0;
+  position: absolute;
+  background-color: #000;
+  opacity: 0.5;
+}
+
+.menu__overlay_active {
+  width: 100vw;
+  height: 100vh;
+  right: 100%;
+  z-index: 98;
+  position: fixed;
+}
+
+.menu__container {
+  position: relative;
+  width: 67.7%;
+  height: 100%;
+}
+
+.menu__button_close {
+  background-image: url('../../../public/close_icon_menu.svg');
+  width: 22px;
+  height: 22px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  background-position: center;
+  position: absolute;
+  top: 35px;
+  color: red;
+  left: 10px;
+  z-index: 99;
+  cursor: pointer;
+}
+
+.menu__button_close:hover {
+  opacity: 0.8;
+  transition: opacity 0.2s 20ms ease-in-out;
+}
+
+.menu__nav {
+  display: flex;
+  max-width: 180px;
+  height: 100%;
+  flex-direction: column;
+  margin-left: 50px;
+}
+
+.menu__link {
+  text-decoration: none;
+  color: white;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+}
+
+.menu__link:first-child {
+  margin: 100px 0 0 0;
+}
+
+.menu__link:nth-child(2n) {
+  margin: 26px 0 29px 0;
+}
+
+.menu__link:nth-child(3n) {
+  letter-spacing: 1.03px;
+}
+
+.menu__link_active {
+  position: relative;
+  color: red;
+}
+
+.menu__link_active::after {
+  position: absolute;
+  content: '';
+  padding-bottom: 5px;
+  border-bottom: 2px white solid;
+  display: flex;
+  flex-direction: column;
+}
+
+.menu__main {
+  margin-top: 144px;
+}
+
+.menu__films {
+  margin: 24px 0;
+}
+
+.menu__account {
+  margin-top: 444px;
+}
+
+.menu__button_account {
+  color: white;
+  font-family: 'Inter', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 12px;
+  margin: 0 10px 0 0;
+}
+
+.menu__account-icon {
+  width: 26px;
+  height: 26px;
+  background-color: #313131;
+  border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.menu__account {
+  display: flex;
+  align-items: center;
+  opacity: 1;
+  text-decoration: none;
+}
+
+.menu__account:hover {
+  opacity: 0.5;
+  transition: 1s linear 0.2s ease-in-out;
+}
+
+@media screen and (max-width: 450px) {
+  .menu_active {
+    transform: translate(0%);
+  }
+
+  .menu__button_close {
+    top: 25px;
+    left: 0;
+    right: 26px;
+  }
+
+  .menu__container {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 320px) {}

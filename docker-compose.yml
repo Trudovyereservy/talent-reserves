@@ -27,7 +27,6 @@ services:
     networks:
       - db_network
   
-
   celery:
     build: talent_reserves
     command: celery -A talent_reserves worker -l INFO

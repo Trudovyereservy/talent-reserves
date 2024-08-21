@@ -1,0 +1,74 @@
+@import '@/styles/variables';
+@import '@/styles/mixins';
+
+.cardslist {
+  max-width: 1440px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 40px 140px 70px 140px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  font-family: Roboto, sans-serif;
+}
+
+.cardslist__title {
+  color: $text-color-blue;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 1.63;
+  margin-bottom: 20px;
+}
+
+.cardslist__container {
+  width: 100%;
+  display: grid;
+  gap: 40px;
+  grid-template-rows: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 0;
+  list-style-type: none;
+}
+
+@include laptop {
+  .cardslist {
+    max-width: 1024px;
+    padding: 40px 42px 100px 42px;
+  }
+  .cardslist__title {
+    font-size: 55px;
+    letter-spacing: -1px;
+  }
+  .cardslist__container {
+    gap: 20px;
+  }
+}
+
+@include tablet{
+  .cardslist {
+    max-width: 494px;
+    padding: 20px 47px 69px;
+  }
+  
+  .cardslist__title {
+    font-size: 34px;
+    margin-bottom: 25px;
+    letter-spacing: -0.5px;
+  }
+
+  .cardslist__container {
+    flex-direction: column;
+    gap:34px;
+  }
+
+  .cardslist__container {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@include mobile {
+  .cardslist {
+    max-width: 394px;
+  }
+}

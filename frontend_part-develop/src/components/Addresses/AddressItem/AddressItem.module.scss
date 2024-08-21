@@ -1,0 +1,48 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.addressItem {
+  max-width: 300px;
+  min-height: 91px;
+}
+
+.addressItem__title {
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  color: $text-color-blue;
+  border: none;
+  background-color: transparent;
+}
+
+.addressItem__title:hover {
+  cursor: pointer;
+}
+
+.addressItem__address {
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 25.5px;
+  color: $text-color-grey;
+}
+
+@include tablet {
+  .addressItem {
+    min-height: 82px;
+    height: 82px;
+  }
+}
+
+@include mobile {
+  .addressItem__title {
+    margin-bottom: 7px;
+    font-size: 14px;
+    line-height: 23.1px;
+  }
+
+  .addressItem__address {
+    font-size: 14px;
+    line-height: 23.1px;
+  }
+}

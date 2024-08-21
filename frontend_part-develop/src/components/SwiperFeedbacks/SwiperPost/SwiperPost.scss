@@ -1,0 +1,72 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.feedbackCard__textPost {
+  text-align: justify;
+  text-align-last: center;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 25.5px;
+  margin-bottom: 49px;
+}
+
+.feedbackCard__about {
+  text-align: center;
+
+  .feedbackCard__textName {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 28px;
+    color: $bg-color-blue;
+  }
+
+  .feedbackCard__textDescription {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 26.15px;
+  }
+}
+
+@include netbook {
+  .feedbackCard__textPost {
+    margin-bottom: 10px;
+  }
+}
+
+@include tablet {
+  .feedbackCard__textPost {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 18px;
+    margin-bottom: 25px;
+  }
+}
+
+@include mobile {
+  
+  .feedbackCard {
+  
+    &__textPost {
+      font-size: 14px;
+      line-height: 23.1px;
+      margin-bottom: 17px;
+    }
+  
+    &__about > &__textName {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 23.1px;
+      color: $bg-color-blue;
+    }
+
+    &__textDescription {
+    display: none;
+  }
+}
+
+  .feedbackCard__textPost {
+    margin-bottom: 18px;
+}
+}
+
+

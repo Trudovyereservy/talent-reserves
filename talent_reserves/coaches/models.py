@@ -1,5 +1,4 @@
 from django.db import models
-
 from talent_reserves.yandex_s3_storage import ClientMediaStorage
 
 NAME_MAX_LENGTH = 64
@@ -65,8 +64,8 @@ class Coach(models.Model):
 
     class Meta:
         ordering = ['-surname']
-        verbose_name = 'Coach'
-        verbose_name_plural = 'Coaches'
+        verbose_name = 'Тренер'
+        verbose_name_plural = 'Тренера'
 
     def __str__(self) -> str:
         return f'{self.surname} {self.name} {self.patronymic}'

@@ -1,7 +1,6 @@
 import pytest
-from rest_framework.test import APIClient
-
 from coaches.models import Coach
+from rest_framework.test import APIClient
 
 
 @pytest.mark.django_db

@@ -1,0 +1,43 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+$width: calc(100% - 280px);
+$width-desktop: calc(100% - 84px);
+$width-tablet: calc(100% - 92px);
+
+.cardList {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 40px;
+  row-gap: 15px;
+  margin: 0 auto 97px;
+  width: $width;
+}
+
+@include desktop {
+  .cardList {
+    width: $width-desktop;
+    gap: 20px;
+  }
+}
+
+@include laptop {
+  .cardList {
+    margin-bottom: 74px;
+  }
+}
+
+@include netbook {
+  .cardList {
+    grid-template-columns: auto auto;
+  }
+}
+
+@include tablet {
+  .cardList {
+    width: $width-tablet;
+    margin-bottom: 100px;
+    grid-template-columns: auto;
+    row-gap: 10px;
+  }
+}

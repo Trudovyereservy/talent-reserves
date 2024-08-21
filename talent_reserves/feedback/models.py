@@ -7,7 +7,7 @@ class Feedback(models.Model):
     subject = models.CharField(
         max_length=50,
         verbose_name='Тема сообщения (кратко)'
-        )
+    )
     message = models.TextField(verbose_name='Ваше сообщение')
     created_at = models.DateTimeField(auto_now_add=True)
 

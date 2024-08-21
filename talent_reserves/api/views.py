@@ -1,22 +1,21 @@
+from blog.models import Post
+from coaches.models import Coach
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from django.utils import timezone
 from django_filters.rest_framework import DjangoFilterBackend
+from feedback.models import Feedback
+from news.models import News
 from rest_framework import viewsets
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
-
-from blog.models import Post
-from coaches.models import Coach
-from feedback.models import Feedback
-from news.models import News
+from talent_reserves.tasks import send_feedback_email_task
 
 from .filters import CoachFilter, NewsFilter, PostFilter
 from .mixins import CreateViewSet
 from .pagination import CommonPagination
 from .serializers import (CoachSerializer, FeedbackSerializer, NewsSerializer,
                           PostSerializer)
-from talent_reserves.tasks import send_feedback_email_task
 
 
 class CoachViewSet(viewsets.ReadOnlyModelViewSet):

@@ -1,0 +1,127 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.card__photo_wrapper {
+  position: relative;
+  width: 360px;
+}
+
+.card__info_additional {
+  position: absolute;
+  background-color: white;
+  width: 54px;
+  height: 54px;
+  background-image: url('../../../../public/Coach_plus.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  border: $border-color-ligth-blue 1px solid;
+  border-radius: 8px;
+  bottom: -20px;
+  left: calc(50% - 54px / 2);
+}
+
+.card__info_additional_active {
+  border: 1px solid $border-color-red;
+  background-image: url('../../../../public/Coach_card_opened.png');
+}
+
+.card {
+  max-width: 360px;
+  min-height: 585px;
+}
+
+.card__info {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 38px;
+}
+
+.card__name {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.card__directions,
+.card__achievements {
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 170%;
+  margin-top: 8px;
+}
+
+.card__achievements {
+  margin-top: 47px;
+}
+
+@include laptop {
+  .card__photo_wrapper {
+    width: 300px;
+  }
+
+  .card {
+    max-width: 300px;
+    min-height: 505px;
+  }
+
+  .card__image {
+    width: 300px;
+    height: 300px;
+  }
+
+  .card__info {
+    margin-top: 30px;
+  }
+
+  .card__directions {
+    margin-top: 8px;
+  }
+
+  .card__info_additional {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    left: calc(50% - 25px);
+  }
+
+  .card__achievements {
+    margin-top: 40px;
+  }
+}
+
+@include mobile {
+  .card {
+    max-width: 140px;
+    min-height: 339px;
+  }
+
+  .card__name {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  .card__directions {
+    margin-top: -5px;
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+  .card__info_additional {
+    width: 48px;
+    height: 48px;
+    border-radius: 8px;
+    left: calc(50% - 23px);
+  }
+
+  .card__image {
+    width: 140px;
+    height: 140px;
+  }
+
+  .card__photo_wrapper {
+    width: 140px;
+  }
+}

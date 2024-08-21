@@ -1,0 +1,226 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.form {
+  margin: 4px auto 0 auto;
+  display: flex;
+  justify-content: center;
+  max-width: 1440px;
+  height: 527px;
+}
+
+.form__headerMobile {
+  color: $bg-color-blue;
+  font-family: var(--font-roboto);
+  font-size: 34px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 38.5px;
+  display: none;
+  width: 300px;
+  margin: 15px 0 8px 0;
+}
+
+.form__lines {
+  position: absolute;
+  top: 25px;
+  width: 100%;
+  max-width: 1440px;
+  z-index: -1;
+  box-sizing: border-box;
+}
+
+.form__photoContainer {
+  // background-image: url('../../../public/Children-1440.svg');
+  background-image: url('../../../public/happy_childs.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: bottom;
+  width: 457.15px;
+  height: 100%;
+}
+
+.form__formContainer {
+  display: flex;
+  flex-direction: column;
+  margin: 44px 0 0 96px;
+}
+
+.form__subtitle {
+  color: $text-color-grey;
+  font-family: var(--font-roboto);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 25px;
+  width: 400px;
+  height: 55px;
+  margin: 0;
+}
+
+.form__header {
+  color: $bg-color-blue;
+  font-family: var(--font-roboto);
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 98px;
+  margin: 0;
+}
+
+.form__form {
+  display: flex;
+  flex-direction: column;
+  margin-top: 22px;
+}
+
+.form__input {
+  border-radius: 30px;
+  border: 1px solid $bg-color-blue;
+  width: 560px;
+  height: 50px;
+  padding-left: 31px;
+  margin-bottom: 1px;
+}
+.form__input::placeholder {
+  color: $bg-color-blue;
+  font-family: var(--font-inter);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: normal;
+  opacity: 1;
+}
+.form__submitButton {
+  background-color: $bg-color-red;
+  color: $bg-color-white;
+  border-radius: 30px;
+  width: 211.2px;
+  font-family: var(--font-roboto);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: normal;
+  padding: 16px 35px;
+  border: none;
+  margin-top: 5px;
+  cursor: pointer;
+}
+.form__inputError {
+  font-family: var(--font-roboto);
+  display: block;
+  color: $bg-color-red;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 12px;
+  min-height: 12px;
+  margin: 0 0 2px 25px;
+}
+
+.form__submitButton:disabled {
+  color: #c2c2c2;
+  background-color: #f8f8f8;
+}
+
+@include desktop {
+  .form {
+    height: 550px;
+    margin: 8px auto 0;
+  }
+
+  .form__lines {
+    display: none;
+  }
+
+  .form__photoContainer {
+    // background-image: url('../../../public/Children-1024.svg');
+    background-image: url('../../../public/happy_childs.png');
+    width: 405.1px;
+    background-position: 0 79px;
+  }
+
+  .form__formContainer {
+    margin: 29px 0 0 58px;
+  }
+
+  .form__header {
+    font-size: 55px;
+    line-height: 71px;
+    margin-bottom: 7px;
+  }
+
+  .form__input {
+    padding-left: 25px;
+    width: 460px;
+  }
+
+  .form__submitButton {
+    font-weight: 500;
+    padding: 16px 0;
+    width: 173.5px;
+  }
+}
+
+@include laptop {
+  .form {
+    margin: 8px 20px 0;
+  }
+}
+
+@include netbook {
+  .form__photoContainer {
+    // background-image: url('../../../public/Children-393.svg');
+    background-image: url('../../../public/happy_childs.png');
+    width: 294.3px;
+    height: 312.3px;
+    background-position: center;
+  }
+
+  .form__formContainer {
+    margin-left: 15px;
+  }
+
+  .form__header {
+    font-size: 34px;
+    line-height: 38.5px;
+    margin-bottom: 7px;
+  }
+
+  .form__input {
+    padding-left: 16px;
+    width: 300px;
+  }
+
+  .form__submitButton {
+    width: 220px;
+  }
+}
+
+@include tablet {
+  .form {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: 702px;
+    margin: 0 auto;
+  }
+
+  .form__headerMobile {
+    display: block;
+  }
+
+  .form__formContainer {
+    margin: 0;
+  }
+
+  .form__subtitle {
+    display: none;
+  }
+
+  .form__header {
+    display: none;
+  }
+
+  .form__form {
+    margin-top: 13px;
+  }
+}

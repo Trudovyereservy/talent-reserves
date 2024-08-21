@@ -1,0 +1,168 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.header__container {
+  margin: 0 auto;
+  margin-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 2px $bg-color-white solid;
+  width: calc(100% - 1160px / 4 + 10px);
+  height: 74px;
+  border-radius: 50px;
+  gap: 25px;
+  background-color: $bg-color-blue;
+  color: $bg-color-white;
+  box-sizing: border-box;
+}
+
+.header__navitem {
+  font-size: 20px;
+}
+
+.header__logo {
+  margin-left: 60px;
+  background-image: url('../../../public/logo.png');
+  width: 52px;
+  height: 52px;
+  background-size: 53px 53px;
+  background-position: center;
+}
+
+.header__navigate {
+  display: flex;
+  align-items: center;
+  gap: 31px;
+  margin-right: 72px;
+}
+
+.header__navigate_links {
+  list-style: none;
+  display: flex;
+  gap: 31px;
+}
+
+.burger {
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  display: flex;
+  position: relative;
+  height: 26px;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 25;
+  cursor: pointer;
+  margin: 0;
+}
+
+.burger:hover {
+  opacity: 0.8;
+  transition: opacity 0.2s 20ms ease-in-out;
+}
+
+.burger__icon {
+  height: 3px;
+  width: 36px;
+  background-color: $bg-color-white;
+}
+
+.burger::after,
+.burger::before {
+  position: absolute;
+  content: '';
+  height: 4px;
+  width: 100%;
+  background-color: $bg-color-white;
+}
+
+.burger::before {
+  top: 0;
+}
+
+.burger::after {
+  bottom: 0;
+}
+
+@include desktop {
+  .header__container {
+    width: calc(100% - 400px / 4 + 16px);
+  }
+}
+
+@include laptop {
+  .header__navigate {
+    gap: 25px;
+  }
+
+  .header__container {
+    height: 74px;
+  }
+
+  .header__navigate {
+    margin-right: 60px;
+  }
+}
+
+@include netbook {
+  .header__navigate {
+    gap: 20px;
+  }
+
+  .header__navigate_links {
+    gap: 15px;
+  }
+
+  .header__navitem {
+    font-size: 18px;
+  }
+}
+
+@include tablet {
+  .header__navhidden {
+    display: none;
+  }
+
+  .header__navigate {
+    margin-right: 30px;
+  }
+
+  .header__logo {
+    margin-left: 30px;
+  }
+}
+
+@include mobile {
+  .header__container {
+    margin-top: 35px;
+    height: 50px;
+    max-width: 300px;
+  }
+
+  .header__navigate {
+    margin-right: 28px;
+  }
+
+  .header__logo {
+    margin-left: 24px;
+    width: 36px;
+    height: 36px;
+    background-size: 36px 36px;
+    background-position: center;
+  }
+
+  .burger {
+    height: 20px;
+  }
+
+  .burger__icon {
+    height: 3px;
+    width: 30px;
+  }
+
+  .burger::after,
+  .burger::before {
+    height: 3px;
+  }
+}

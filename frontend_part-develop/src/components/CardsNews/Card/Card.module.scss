@@ -1,0 +1,50 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.card__image {
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.card__link {
+  color: $text-color-grey;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+@include desktop {
+  .card__image {
+    width: 220px;
+    height: 222px;
+  }
+}
+
+@include tablet {
+  .card {
+    max-width: 220px;
+  }
+}
+
+@include mobile {
+  .card {
+    gap: 20px;
+    max-width: 300px;
+  }
+
+  .card__image {
+    width: 300px;
+    height: 300px;
+  }
+
+  .card__link {
+    font-size: 14px;
+    line-height: 22.88px;
+  }
+}

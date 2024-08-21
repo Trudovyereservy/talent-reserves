@@ -1,0 +1,36 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.map {
+  margin: 0 auto;
+  width: calc(100% - 280px);
+}
+
+.map__iframe {
+  width: 100%;
+  height: 491px;
+  border: none;
+  border-radius: 5px;
+}
+
+@include desktop {
+  .map {
+    width: calc(100% - 84px);
+  }
+}
+
+@include laptop {
+  .map__iframe {
+    height: 407px;
+  }
+}
+
+@include mobile {
+  .map {
+    width: calc(100% - 92px);
+  }
+
+  .map__iframe {
+    height: 223px;
+  }
+}
