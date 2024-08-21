@@ -1,5 +1,3 @@
-version: '3.3'
-
 networks:
   db_network:
 
@@ -23,6 +21,7 @@ services:
     container_name: talent_reserves-back
     image: leonid89/talent_reserves-back:latest
     env_file: .env
+    command: gunicorn talent_reserves.wsgi:application --bind 0:8000
     volumes:
       - static_value:/var/html/static/
       - media_value:/var/html/media/
