@@ -29,7 +29,7 @@ services:
   
   celery:
     build: talent_reserves
-    command: celery -A talent_reserves worker -l INFO
+    command: celery -A -l INFO
     env_file: .env
     depends_on:
       - backend
