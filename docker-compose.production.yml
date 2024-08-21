@@ -32,23 +32,23 @@ services:
     networks:
       - db_network
   
-  celery:
-    build: talent_reserves
-    command: celery -A talent_reserves worker -l INFO
-    env_file: .env
-    depends_on:
-      - backend
-    networks:
-      - db_network
+  # celery:
+  #   build: talent_reserves
+  #   command: celery -A talent_reserves worker -l INFO
+  #   env_file: .env
+  #   depends_on:
+  #     - backend
+  #   networks:
+  #     - db_network
 
-  redis:
-    restart: always
-    image: redis:latest
-    ports:
-      - "6379:6379"
-    command: redis-server
-    networks:
-      - db_network
+  # redis:
+  #   restart: always
+  #   image: redis:latest
+  #   ports:
+  #     - "6379:6379"
+  #   command: redis-server
+  #   networks:
+  #     - db_network
   
   frontend:
     container_name: talent_reserves-front
