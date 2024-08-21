@@ -52,6 +52,5 @@ jobs:
           script: |
             cd talent_reserves
             git pull
-            cd deploy
             docker compose -f docker-compose.production.yml down -v
             docker compose -f docker-compose.production.yml up --build -d
