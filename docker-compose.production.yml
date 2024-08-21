@@ -25,8 +25,8 @@ services:
     env_file: .env
     # command: gunicorn talent_reserves.wsgi:application --bind 0:8000
     volumes:
-      - static_value:/app/static/
-      - media_value:/app/media/
+      - static_value:/var/html/static/
+      - media_value:/var/html/media/
     depends_on:
       - db
       - redis
