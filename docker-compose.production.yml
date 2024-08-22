@@ -33,8 +33,11 @@ services:
   frontend:
     container_name: talent_reserves-front
     image: leonid89/talent_reserves-front:latest
+    environment:
+      - NODE_ENV=production
     volumes:
-      - ../frontend/:/app/result_build/
+      - static:/app/.next/static/
+      - media:/app/.next/media/
   
   nginx:
     container_name: talent_reserves-proxy
@@ -42,7 +45,8 @@ services:
     ports:
       - 8000:80 
     volumes:
-      - ../frontend/.next:/usr/share/nginx/html/
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./.next:/usr/share/nginx/html
       - static:/var/html/static/
       - media:/var/html/media/
     depends_on:
