@@ -8,7 +8,7 @@ volumes:
 
 services:
   db:
-    image: postgres:alpine
+    image: postgres:13.10
     env_file: .env
     volumes:
       - pg_data:/var/lib/postgresql/data
@@ -27,7 +27,6 @@ services:
       - media:/app/media
     depends_on:
       - db
-      - redis
     networks:
       - db_network
   
