@@ -36,8 +36,7 @@ services:
     environment:
       - NODE_ENV=production
     volumes:
-      - static:/app/.next/static/
-      - media:/app/.next/media/
+      - ../frontend/:/app/result_build/
     networks:
       - db_network
   
@@ -48,7 +47,7 @@ services:
       - 8000:80
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./.next:/usr/share/nginx/html/
+      - - ../frontend/build:/usr/share/nginx/html/
       - static:/var/html/static/
       - media:/var/html/media/
     depends_on:
