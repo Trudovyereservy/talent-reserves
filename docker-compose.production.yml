@@ -35,13 +35,14 @@ services:
     image: leonid89/talent_reserves-front:latest
     environment:
       - NODE_ENV=production
+    ports:
+      - 3000:80
   
   nginx:
     container_name: talent_reserves-proxy
     image: leonid89/talent_reserves-proxy:latest
     ports:
       - 8000:80
-      - 3000:80
     volumes:
       - ./.next:/usr/share/nginx/html
       - static:/var/html/static/
