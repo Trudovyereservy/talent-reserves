@@ -38,6 +38,8 @@ services:
     volumes:
       - static:/app/.next/static/
       - media:/app/.next/media/
+    networks:
+      - db_network
   
   nginx:
     container_name: talent_reserves-proxy
