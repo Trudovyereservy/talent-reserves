@@ -35,6 +35,9 @@ services:
     image: leonid89/talent_reserves-front:latest
     environment:
       - NODE_ENV=production
+    volumes:
+      - static_value:/app/.next/static/
+      - media_value:/app/.next/media/
   
   nginx:
     container_name: talent_reserves-proxy
