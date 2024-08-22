@@ -36,8 +36,8 @@ services:
     environment:
       - NODE_ENV=production
     volumes:
-      - static_value:/app/.next/static/
-      - media_value:/app/.next/media/
+      - static:/app/.next/static/
+      - media:/app/.next/media/
   
   nginx:
     container_name: talent_reserves-proxy
