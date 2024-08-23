@@ -1,6 +1,6 @@
 from blog.models import Tag
 from django.db import models
-from talent_reserves.yandex_s3_storage import ClientMediaStorage
+# from talent_reserves.yandex_s3_storage import ClientMediaStorage
 
 
 class News(models.Model):
@@ -39,7 +39,7 @@ class ContentNews(models.Model):
     )
     image = models.ImageField(
         upload_to='photo_news/',
-        storage=ClientMediaStorage()
+        # storage=ClientMediaStorage()
     )
     title_photo = models.CharField(
         max_length=120,
