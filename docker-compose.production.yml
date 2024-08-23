@@ -1,6 +1,5 @@
 networks:
-  back_network:
-  front_network:
+  db_network:
 
 volumes:
   pg_data:
@@ -16,7 +15,7 @@ services:
     ports:
       - "5432:5432"
     networks:
-      - back_network
+      - db_network
 
   backend:
     container_name: talent_reserves-back
@@ -29,38 +28,11 @@ services:
     depends_on:
       - db
     networks:
-      - back_network
+      - db_network
   
-  frontend:
-    container_name: talent_reserves-front
-    image: leonid89/talent_reserves-front:latest
-    environment:
-      - NODE_ENV=production
-    volumes:
-      - ./frontend/.next:/usr/share/nginx/html
-    networks:
-      - front_network
-  
-  nginx_front:
-    container_name: talent_reserves-proxy-front
-    image: leonid89/talent_reserves-proxy-front:latest
-    ports:
-      - "80:80"
-      # Для HTTPS порт
-      - "443:443"
-    volumes:
-      - ./frontend/nginx.conf:/etc/nginx/conf.d/default.conf
-      - ./frontend/.next:/usr/share/nginx/html
-      - static:/var/html/static/
-      - media:/var/html/media/
-    depends_on:
-      - frontend
-    networks:
-      - front_network
-
-  nginx_back:
-    container_name: talent_reserves-proxy-back
-    image: leonid89/talent_reserves-proxy-back:latest
+  nginx:
+    container_name: talent_reserves-proxy
+    image: leonid89/talent_reserves-proxy:latest
     ports:
       - 8000:80
     volumes:
@@ -69,4 +41,4 @@ services:
     depends_on:
       - backend
     networks:
-      - back_network
+      - db_network
