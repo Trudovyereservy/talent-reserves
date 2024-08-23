@@ -6,12 +6,9 @@ services:
     container_name: app
     environment:
       - NODE_ENV=production
-    # volumes:
-    #   - static_value:/app/.next/static/
-      # - media_value:/app/.next/media/
 
   nginx:
-    image: nginx:1.25.4-alpine
+    image: nginx:alpine
     container_name: nginx
     ports:
       - "80:80"
@@ -22,15 +19,9 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ./.next:/usr/share/nginx/html
-      - static_value:/var/html/static/
-      - media_value:/var/html/media/
     env_file:
       - .env
     logging:
       options:
         max-size: "10m"
         max-file: "3"
-
-volumes:
-  static_value:
-  media_value:
