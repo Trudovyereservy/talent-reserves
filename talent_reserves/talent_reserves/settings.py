@@ -136,13 +136,13 @@ EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_RECIPIENT = os.getenv('EMAIL_RECIPIENT')
 EMAIL_USE_TLS = os.getenv('EMAIL_USE_TLS', False) == 'True'
 EMAIL_USE_SSL = os.getenv('EMAIL_USE_SSL', False) == 'True'
-# Yandex Cloud
-YANDEX_BUCKET_NAME = os.environ.get('YANDEX_BUCKET_NAME', default='talent-reserves')
-DEFAULT_FILE_STORAGE = f'{YANDEX_BUCKET_NAME}.yandex_s3_storage.ClientMediaStorage'
-AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
-AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
-YANDEX_CLOUD_DOMAIN = 'storage.yandexcloud.net'
-AWS_S3_CUSTOM_DOMAIN = f'{YANDEX_BUCKET_NAME}.{YANDEX_CLOUD_DOMAIN}'
-# AWS_S3_REGION_NAME =  'storage'
-AWS_S3_ENDPOINT_URL = f'https://{YANDEX_CLOUD_DOMAIN}'
-YANDEX_PUBLIC_MEDIA_LOCATION = 'media/'
+# # Yandex Cloud
+# YANDEX_BUCKET_NAME = os.environ.get('YANDEX_BUCKET_NAME', default='talent-reserves')
+# DEFAULT_FILE_STORAGE = f'{YANDEX_BUCKET_NAME}.yandex_s3_storage.ClientMediaStorage'
+# AWS_ACCESS_KEY_ID = os.environ.get('AWS_ACCESS_KEY_ID')
+# AWS_SECRET_ACCESS_KEY = os.environ.get('AWS_SECRET_ACCESS_KEY')
+# YANDEX_CLOUD_DOMAIN = 'storage.yandexcloud.net'
+# AWS_S3_CUSTOM_DOMAIN = f'{YANDEX_BUCKET_NAME}.{YANDEX_CLOUD_DOMAIN}'
+# # AWS_S3_REGION_NAME =  'storage'
+# AWS_S3_ENDPOINT_URL = f'https://{YANDEX_CLOUD_DOMAIN}'
+# YANDEX_PUBLIC_MEDIA_LOCATION = 'media/'
