@@ -1,9 +1,14 @@
+networks:
+  talent_reserves_default:
+
 services:
   frontend:
     container_name: talent_reserves-front
-    image: leonid89/talent_reserves-front:latest
+    image: leonid89/talent_reserves-front:latest 
     environment:
       - NODE_ENV=production
+    networks:
+      - talent_reserves_default
 
   nginx:
     image: nginx:alpine
@@ -23,3 +28,5 @@ services:
       options:
         max-size: "10m"
         max-file: "3"
+    networks:
+      - talent_reserves_default
