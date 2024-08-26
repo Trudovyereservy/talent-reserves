@@ -1,9 +1,7 @@
-version: '3.8'
-
 services:
-  app:
-    build: .
-    container_name: app
+  frontend:
+    container_name: talent_reserves-front
+    image: leonid89/talent_reserves-front:latest
     environment:
       - NODE_ENV=production
 
@@ -15,7 +13,7 @@ services:
       # Для HTTPS порт
       - "443:443"
     depends_on:
-      - app
+      - frontend
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ./.next:/usr/share/nginx/html
