@@ -34,7 +34,7 @@ docker-compose up -d --build
 
 * Документация к API доступна по ссылке:
 ```
-http://127.0.0.1:8000/docs/
+http://127.0.0.1:8000/api/docs/
 ```
 
 </details>
