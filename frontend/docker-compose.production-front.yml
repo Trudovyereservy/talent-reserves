@@ -2,7 +2,7 @@ networks:
   talent_reserves_default:
 
 services:
-  frontend:
+  app:
     container_name: talent_reserves-front
     image: leonid89/talent_reserves-front:latest 
     environment:
@@ -18,7 +18,7 @@ services:
       # Для HTTPS порт
       - "443:443"
     depends_on:
-      - frontend
+      - app
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ./.next:/usr/share/nginx/html
