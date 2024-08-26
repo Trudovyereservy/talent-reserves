@@ -1,5 +1,5 @@
 from django.db import models
-# from talent_reserves.yandex_s3_storage import ClientMediaStorage
+from talent_reserves.yandex_s3_storage import ClientMediaStorage
 
 NAME_MAX_LENGTH = 64
 
@@ -58,7 +58,7 @@ class Coach(models.Model):
     )
     photo = models.ImageField(
         upload_to='coaches/',
-        # storage=ClientMediaStorage(),
+        storage=ClientMediaStorage(),
         null=True,
         default=None)
 

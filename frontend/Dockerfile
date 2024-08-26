@@ -4,6 +4,8 @@ FROM base as deps
 
 WORKDIR /app
 
+# COPY /public/images /app/.next/static/media
+
 COPY package.json yarn.lock ./
 
 RUN yarn install --frozen-lockfile
@@ -14,7 +16,6 @@ WORKDIR /app
 
 COPY --from=deps /app/node_modules ./node_modules
 COPY . .
-COPY /public /app/.next/static
 
 RUN yarn build
 

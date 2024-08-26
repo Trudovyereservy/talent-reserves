@@ -1,0 +1,44 @@
+networks:
+  db_network:
+
+volumes:
+  pg_data:
+  static:
+  media:
+
+services:
+  db:
+    image: postgres:alpine
+    env_file: .env
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - db_network
+
+  backend:
+    container_name: talent_reserves-back
+    build: ./talent_reserves
+    env_file: .env
+    command: gunicorn talent_reserves.wsgi:application --bind 0:8000
+    volumes:
+      - static:/var/html/static/
+      - media:/app/media
+    depends_on:
+      - db
+    networks:
+      - db_network
+  
+  nginx:
+    container_name: talent_reserves-proxy
+    image: leonid89/talent_reserves-proxy:latest
+    ports:
+      - 8000:80
+    volumes:
+      - static:/var/html/static/
+      - media:/var/html/media/
+    depends_on:
+      - backend
+    networks:
+      - db_network
