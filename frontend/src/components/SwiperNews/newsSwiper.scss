@@ -1,0 +1,55 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.mySwiperNews {
+    max-width: 1640px;
+    margin-left: 140px;
+}
+
+.swiper .mySwiperNews {
+    margin: 0;
+    overflow: hidden;
+}
+
+.mySwiperNews .swiper-slide-next {
+    opacity: .4;
+}
+
+.swiper-scrollbar {
+    max-width: 1160px;
+    margin: 0 auto;
+}
+
+.swiper-scrollbar-drag {
+    background-color: $bg-color-blue;
+    border-radius: 30px;
+}
+
+.swiper-scrollbar.swiper-scrollbar-horizontal {
+    border: 2px $bg-color-blue solid;
+    max-height: 15px;
+    height: 100%;
+    border-radius: 30px;
+    background-color: $bg-color-white;
+}
+
+.mySwiperNews .swiper-wrapper {
+    // border: 2px green solid;
+}
+
+@include tablet{
+    .mySwiperNews {
+        margin-left: 42px;
+    }    
+}
+
+@include mobile {
+    .swiper-scrollbar.swiper-scrollbar-horizontal {
+        max-height: 10px;
+    }
+
+    .mySwiperNews {
+        margin-left: 47px;
+    }
+}
+
