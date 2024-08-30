@@ -15,7 +15,7 @@ import styles from './SwiperFeedbacks.module.scss';
 const SwiperFeedbacks = ({ sliderPosts }: ISwiperFeedbacksProps) => {
   return (
     <>
-      <h2 className={styles.feedbacks__title}>Пример текста</h2>
+      <h2 className={styles.feedbacks__title}>Федерации</h2>
       <Swiper
         modules={[Pagination, Autoplay]}
         loop={config.loop}
