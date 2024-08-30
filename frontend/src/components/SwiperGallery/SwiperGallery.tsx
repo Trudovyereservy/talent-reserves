@@ -10,7 +10,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import useWindowSize from '@/hooks/useWindowSize';
 import '@/styles/globals.scss';
 
-import { ISwiperGalleryProps } from './SwiperGallery.props';
+import { ISwiperGalleryProps } from '../SwiperGallery/SwiperGallery.props';
 
 import { config } from './configSwiper';
 import { SlidePreview } from './SlidePreview/SlidePreview';

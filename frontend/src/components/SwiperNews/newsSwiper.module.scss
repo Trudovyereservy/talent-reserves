@@ -1,0 +1,19 @@
+@import '@/styles/_variables.scss';
+@import '@/styles/_mixins.scss';
+
+.newsSwiperWrapper {
+    max-width: 1640px;
+    // border: 2px red solid;
+}
+
+@include tablet {
+    .newsSwiperWrapper {
+        margin-left: 42px;
+    }
+}
+
+@include mobile {
+    .newsSwiperWrapper {
+        margin-left: 47px;
+    }
+}
