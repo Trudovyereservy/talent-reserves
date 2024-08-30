@@ -27,7 +27,6 @@ services:
       - media:/app/media
     depends_on:
       - db
-      - redis
     networks:
       - db_network
   
