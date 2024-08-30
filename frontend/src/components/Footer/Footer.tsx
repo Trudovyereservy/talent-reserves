@@ -65,11 +65,11 @@ const Footer = () => {
             </Link>
           </div>
           <div className={styles.footer__adress}>
-            {/* <Link href="#">
-              <p className={styles.footer__contacts_item}>Пример</p>
-            </Link> */}
             <Link href="#">
-              <p className={styles.footer__contacts_item}>Форма подачи заявки</p>
+              <p className={styles.footer__contacts_item}>Пример</p>
+            </Link>
+            <Link href="#">
+              <p className={styles.footer__contacts_item}>Пример</p>
             </Link>
           </div>
           <form

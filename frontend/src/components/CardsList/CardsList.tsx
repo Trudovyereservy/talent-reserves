@@ -5,7 +5,7 @@ import styles from './CardsList.module.scss';
 
 const CardsList = () => (
   <section className={styles.cardslist}>
-    <h2 className={styles.cardslist__title}>Новости</h2>
+    <h2 className={styles.cardslist__title}>Пример текста</h2>
     <ul className={styles.cardslist__container}>
       {testCards.map((card) => (
         <Card

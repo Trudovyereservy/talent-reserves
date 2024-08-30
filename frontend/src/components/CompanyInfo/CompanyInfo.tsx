@@ -23,11 +23,10 @@ const CompanyInfo = () => {
 
   const mobileView = () => (
     <article className={styles.companyinfo__wrapper}>
-      <h2 className={styles.companyinfo__title}>Трудовые резервы</h2>
+      <h2 className={styles.companyinfo__title}>Пример текста</h2>
       <div className={styles.companyinfo__info}>
         <div className={styles.companyinfo__description}>
-        Трудовые резервы – это объединение спортивных секций для формирования и воспитания нового поколения лидеров через активный образ жизни и спорт. 
-Наша цель - развивать патриотизм, самоидентификацию и здоровый образ жизни у молодежи. Мы поддерживаем спортивные программы и помогаем молодым людям определить свои цели. Мы хотим, чтобы каждый молодой человек стал лидером и принимал ответственность за свою среду.
+          Пример текста пример текста пример текста...
         </div>
         <div className={styles.companyinfo__items}>
           <SwiperGalleryProvider />
@@ -39,12 +38,11 @@ const CompanyInfo = () => {
 
   const desktopView = () => (
     <article className={styles.companyinfo__wrapper}>
-      <h2 className={styles.companyinfo__title}>Трудовые резервы</h2>
+      <h2 className={styles.companyinfo__title}>Пример текста</h2>
       <div className={styles.companyinfo__infowrapper}>
         <div className={styles.companyinfo__info}>
           <div className={styles.companyinfo__description}>
-          Трудовые резервы – это объединение спортивных секций для формирования и воспитания нового поколения лидеров через активный образ жизни и спорт. 
-Наша цель - развивать патриотизм, самоидентификацию и здоровый образ жизни у молодежи. Мы поддерживаем спортивные программы и помогаем молодым людям определить свои цели. Мы хотим, чтобы каждый молодой человек стал лидером и принимал ответственность за свою среду.
+            Пример текста пример текста пример текста...
           </div>
           <div className={styles.companyinfo__items}>{cards}</div>
         </div>

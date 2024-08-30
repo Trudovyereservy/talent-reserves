@@ -3,7 +3,7 @@
 
 .card__image {
   width: 100%;
-  // height: auto;
+  height: auto;
   display: block;
   object-fit: cover;
   object-position: center;
@@ -19,7 +19,6 @@
   font-weight: 600;
   line-height: 1.65;
   margin-bottom: 10px;
-  max-width: 360px;
 }
 
 .card__subtitle {
