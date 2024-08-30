@@ -1,6 +1,6 @@
 FROM node:20-alpine AS base
 
-FROM base AS deps
+FROM base as deps
 
 WORKDIR /app
 
@@ -19,10 +19,10 @@ COPY . .
 
 RUN yarn build
 
-FROM base AS runner
+FROM base as runner
 WORKDIR /app
 
-ENV NODE_ENV=production
+ENV NODE_ENV production
 
 RUN addgroup --system --gid 1001 nodejs
 RUN adduser --system --uid 1001 nextjs
