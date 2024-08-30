@@ -20,7 +20,7 @@ export default function NewsPage() {
         <meta name="title" content="Новости" />
       </head>
       <DescriptionPages descriptionPages={descriptionPages} />
-      <SwiperNewsProvider newsCards={newsCards} />
+      {/* <SwiperNewsProvider newsCards={newsCards} /> */}
       <NewsCardsList newsCards={newsCards} />
       {/* TODO: Update with functionality */}
       <Pagination totalCards={117} currentPage={3} />
