@@ -28,14 +28,14 @@ export default function Form() {
 
   return (
     <div className={styles.form}>
-      <h2 className={styles.form__headerMobile}>Пример текста</h2>
+      <h2 className={styles.form__headerMobile}>Оставить заявку</h2>
       <div className={styles.form__photoContainer} />
       <Image className={styles.form__lines} src={lines} alt="Декоративные линии" />
       {/* <Image className={styles.form__lines} src={childHappy} alt="Декоративные линии" /> */}
       <div className={styles.form__formContainer}>
-        <h2 className={styles.form__header}>Пример текста</h2>
+        <h2 className={styles.form__header}>Оставить заявку</h2>
         <p className={styles.form__subtitle}>
-          Пример текста пример текста пример текста пример текста пример текста пример текста
+          Зачисление в трудовые резервы проходит на конкурсной основе. Оставьте свои контакты и мы свяжемся с вами.
         </p>
         <form className={styles.form__form} onSubmit={handleSubmit(onSubmit)}>
           <input
@@ -100,7 +100,7 @@ export default function Form() {
             type="submit"
             disabled={isSubmitting || !isValid}
           >
-            Пример текста
+            Отправить
           </button>
         </form>
       </div>
