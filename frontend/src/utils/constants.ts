@@ -774,7 +774,5 @@ export {
   sliderPosts,
   slidesSwiperGallery,
   cardsCompanyInfo,
-  newsCards,
-  cardsCompanyInfo,
   newsCards
 };
