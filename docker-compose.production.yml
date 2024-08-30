@@ -35,8 +35,6 @@ services:
     build: talent_reserves
     command: celery -A talent_reserves worker -l INFO
     env_file: .env
-    depends_on:
-      - backend
     networks:
       - db_network
   redis:
