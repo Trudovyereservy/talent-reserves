@@ -44,6 +44,10 @@
   margin-bottom: 10px;
 }
 
+.card__image {
+  object-fit: cover;
+}
+
 .card__directions,
 .card__achievements {
   font-size: 15px;

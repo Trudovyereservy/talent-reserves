@@ -6,15 +6,18 @@ import { useCardCount } from '@/hooks/useCardCount';
 import useWindowSize from '@/hooks/useWindowSize';
 
 import { NewsCard } from '../NewsCard/NewsCard';
-import { NewsCardProps } from '../NewsCard/NewsCard.props';
+import { NewsCardProp, ITags } from '../NewsCard/NewsCard.props';
 
 import styles from './NewsCardsList.module.scss';
 
-const NewsCardsList = ({ newsCards }: { newsCards: NewsCardProps[] }) => {
+const NewsCardsList = ({ newsCards }: { newsCards: NewsCardProp[] }) => {
   const width: number = useWindowSize();
   const count = useCardCount(width, 'newsCardsComponent');
 
-  const visibleNewsCards = useMemo(() => newsCards.slice(0, count), [newsCards, count]);
+  const visibleNewsCards: NewsCardProp[] = useMemo(
+    () => newsCards.slice(0, count),
+    [newsCards, count],
+  );
 
   return (
     <section className={styles.cardslist}>
@@ -27,7 +30,16 @@ const NewsCardsList = ({ newsCards }: { newsCards: NewsCardProps[] }) => {
             description={card.description}
             images={card.images}
             date_published={card.date_published}
-            tags={card.tags}
+            // tags={card.tags}
+            tags={
+              Array.isArray(card.tags) ? (
+                <>
+                  {card.tags.map((tag: ITags) => (
+                    <span key={tag.id}>{tag.name}</span>
+                  ))}
+                </>
+              ) : null
+            }
           />
         ))}
       </ul>

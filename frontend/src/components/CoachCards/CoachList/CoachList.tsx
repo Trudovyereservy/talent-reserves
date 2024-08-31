@@ -1,22 +1,49 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useState, useEffect } from 'react';
 
 import { Card } from '@/components/CoachCards/Card/Card';
-import { ICardCoachProps } from '@/components/CoachCards/Card/Card.props';
+import { ICardCoachProps, IDirection } from '@/components/CoachCards/Card/Card.props';
 import { useCardCount } from '@/hooks/useCardCount';
 import useWindowSize from '@/hooks/useWindowSize';
 
 import styles from './CoachList.module.scss';
 
-const CoachList = ({ coachCards }: { coachCards: ICardCoachProps[] }) => {
+const fetchData = async () => {
+  // const response = await fetch('http://trudreserv.site/api/coaches/', {
+  const response = await fetch('http://127.0.0.1:8000/api/coaches/', {
+    method: 'GET',
+    mode: 'cors',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  const data = await response.json();
+  return data;
+};
+
+const CoachList = () => {
+  const [trainers, setTrainers] = useState([]);
+
   const width: number = useWindowSize();
   const count = useCardCount(width, 'coachesComponent');
 
   const visibleCoachCards: ICardCoachProps[] = useMemo(
-    () => coachCards.slice(0, count),
-    [coachCards, count],
+    () => trainers.slice(0, count),
+    [trainers, count],
   );
+
+  useEffect(() => {
+    fetchData()
+      .then((json) => {
+        if (json && json.results) {
+          setTrainers(json.results);
+        } else {
+          console.error('Data format is incorrect');
+        }
+      })
+      .catch((error) => console.error('Error fetching data:', error));
+  }, []);
 
   return (
     <section className={styles.cardslist}>
@@ -27,7 +54,15 @@ const CoachList = ({ coachCards }: { coachCards: ICardCoachProps[] }) => {
             key={card.id}
             name={card.name}
             surname={card.surname}
-            directions={card.directions}
+            directions={
+              Array.isArray(card.directions) ? (
+                <>
+                  {card.directions.map((direction: IDirection) => (
+                    <span key={direction.id}>{direction.title}</span>
+                  ))}
+                </>
+              ) : null
+            }
             achievements={card.achievements}
             patronymic={card.patronymic}
             photo={card.photo}

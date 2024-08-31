@@ -21,12 +21,13 @@ const MainBanner = () => (
     <div className={styles.mainbanner__background}></div>
     <div className={styles.mainbanner__container}>
       <h1 className={styles.mainbanner__title}>
-      Трудовые резервы – <span className={styles.mainbanner__words}>стань лидером</span> через спорт
+        Трудовые резервы – <span className={styles.mainbanner__words}>стань лидером</span> через
+        спорт
       </h1>
       <p className={styles.mainbanner__subtitle}>
-      Мы развиваем молодых лидеров через спорт и здоровый образ жизни. 
-      Через спортивную подготовку и дисциплину учим достигать целей и нести ответственность за свою жизнь. 
-      Воспитываем будущее поколение профессионалов своего дела.
+        Мы развиваем молодых лидеров через спорт и здоровый образ жизни. Через спортивную подготовку
+        и дисциплину учим достигать целей и нести ответственность за свою жизнь. Воспитываем будущее
+        поколение профессионалов своего дела.
       </p>
       <Button
         className={styles.mainbanner__button}

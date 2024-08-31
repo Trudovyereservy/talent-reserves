@@ -35,7 +35,8 @@ export default function Form() {
       <div className={styles.form__formContainer}>
         <h2 className={styles.form__header}>Оставить заявку</h2>
         <p className={styles.form__subtitle}>
-          Зачисление в трудовые резервы проходит на конкурсной основе. Оставьте свои контакты и мы свяжемся с вами.
+          Зачисление в трудовые резервы проходит на конкурсной основе. Оставьте свои контакты и мы
+          свяжемся с вами.
         </p>
         <form className={styles.form__form} onSubmit={handleSubmit(onSubmit)}>
           <input

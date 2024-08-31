@@ -1,6 +1,6 @@
 'use client';
 
-import { Pagination, Autoplay } from 'swiper/modules';
+// import { Pagination, Autoplay } from 'swiper/modules';
 import { Scrollbar } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -35,16 +35,16 @@ const SwiperNews = ({ newsCards }: INewsSlides) => {
         className="mySwiperNews"
       >
         {newsCards.map((item) => (
-            <SwiperSlide key={item.id}>
-                <SwiperNewsCard
-                id={item.id}
-                title={item.title}
-                description={item.description}
-                date_published={item.date_published}
-                images={item.images}
-                tags={item.tags}
-                />
-            </SwiperSlide>
+          <SwiperSlide key={item.id}>
+            <SwiperNewsCard
+              id={item.id}
+              title={item.title}
+              description={item.description}
+              date_published={item.date_published}
+              images={item.images}
+              tags={item.tags}
+            />
+          </SwiperSlide>
         ))}
       </Swiper>
     </div>
