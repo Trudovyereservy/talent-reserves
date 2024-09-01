@@ -10,8 +10,8 @@ import useWindowSize from '@/hooks/useWindowSize';
 import styles from './CoachList.module.scss';
 
 const fetchData = async () => {
-  // const response = await fetch('http://trudreserv.site/api/coaches/', {
-  const response = await fetch('http://127.0.0.1:8000/api/coaches/', {
+  // const response = await fetch('http://127.0.0.1:8000/api/coaches/', {
+  const response = await fetch('https://trudreserv.site/api/coaches/', {
     method: 'GET',
     mode: 'cors',
     headers: {
