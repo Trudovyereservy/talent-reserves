@@ -1,25 +1,19 @@
 import type { Metadata } from 'next';
+import { CoachList } from '@/components/CoachCards/CoachList/CoachList';
 import { DescriptionPages } from '@/components/DescriptionPages/DescriptionPages';
-import { NewsCardsList } from '@/components/NewsCards/NewsCardsList/NewsCardsList';
 import { Pagination } from '@/components/Pagination/Pagination';
-import SwiperNewsProvider from '@/components/ProviderComponents/SwiperNewsProvider';
-import { newsCards, descriptionPages } from '@/utils/constants';
-
+import { descriptionPages } from '@/utils/constants';
 export const metadata: Metadata = {
-  title: { absolute: 'Трудовые резервы | Новости' },
+  title: { absolute: 'Трудовые резервы | Тренерский состав' },
   description:
     'Эта страница создана для демонстрации блоков и элементов, которые используются на сайте...',
 };
+
 export default function CoachesPage() {
   return (
     <>
-      <head>
-        <title>Трудовые резервы | Новости</title>
-        <meta name="title" content="Новости" />
-      </head>
       <DescriptionPages descriptionPages={descriptionPages} />
-      <SwiperNewsProvider newsCards={newsCards} />
-      <NewsCardsList newsCards={newsCards} />
+      <CoachList />
       {/* TODO: Update with functionality */}
       <Pagination totalCards={117} currentPage={3} />
     </>
