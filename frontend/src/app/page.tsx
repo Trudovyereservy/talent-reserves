@@ -1,27 +1,27 @@
-import { CardsList } from '@/components/CardsList/CardsList';
-import { CardsNews } from '@/components/CardsNews/CardsNews';
-import { CompanyInfo } from '@/components/CompanyInfo/CompanyInfo';
-import { Faq } from '@/components/Faq/Faq';
-import Form from '@/components/Form/Form';
-import { MainBanner } from '@/components/main-banner/main-banner';
-import SwiperProvider from '@/components/ProviderComponents/SwiperProvider';
+import type { Metadata } from 'next';
+import { DescriptionPages } from '@/components/DescriptionPages/DescriptionPages';
+import { NewsCardsList } from '@/components/NewsCards/NewsCardsList/NewsCardsList';
+import { Pagination } from '@/components/Pagination/Pagination';
+import SwiperNewsProvider from '@/components/ProviderComponents/SwiperNewsProvider';
+import { newsCards, descriptionPages } from '@/utils/constants';
 
-import { cardsNewsMain } from '../utils/constants';
-
-import styles from './page.module.scss';
-
-export default function Home() {
+export const metadata: Metadata = {
+  title: { absolute: 'Трудовые резервы | Новости' },
+  description:
+    'Эта страница создана для демонстрации блоков и элементов, которые используются на сайте...',
+};
+export default function CoachesPage() {
   return (
     <>
-      <div className={styles.mainbanner__wrapper}>
-        <MainBanner />
-        <CompanyInfo />
-        <CardsList />
-        <SwiperProvider />
-        <Form />
-        <Faq />
-        <CardsNews cardsNews={cardsNewsMain} />
-      </div>
+      <head>
+        <title>Трудовые резервы | Новости</title>
+        <meta name="title" content="Новости" />
+      </head>
+      <DescriptionPages descriptionPages={descriptionPages} />
+      <SwiperNewsProvider newsCards={newsCards} />
+      <NewsCardsList newsCards={newsCards} />
+      {/* TODO: Update with functionality */}
+      <Pagination totalCards={117} currentPage={3} />
     </>
   );
 }
