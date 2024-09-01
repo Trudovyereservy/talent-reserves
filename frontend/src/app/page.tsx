@@ -9,7 +9,7 @@ export const metadata: Metadata = {
     'Эта страница создана для демонстрации блоков и элементов, которые используются на сайте...',
 };
 
-export default function CoachesPage() {
+export default function Home() {
   return (
     <>
       <DescriptionPages descriptionPages={descriptionPages} />
