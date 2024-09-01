@@ -4,8 +4,7 @@ export interface NewsCardProps {
   description: string;
   date_published: string;
   images: string;
-  // tags: string[];
-  tags: JSX.Element | null;
+  tags?: string[];
 }
 
 export interface NewsCardProp {
