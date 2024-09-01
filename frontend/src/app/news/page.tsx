@@ -22,9 +22,14 @@ export default function NewsPage() {
       <DescriptionPages descriptionPages={descriptionPages} />
       {/* <SwiperNewsProvider newsCards={newsCards} />  */}
       <SwiperNewsProvider />
-      <NewsCardsList newsCards={newsCards} />
+      <NewsCardsList
+        newsCards={newsCards.map(card => ({
+          ...card,
+          tags: card.tags || [],
+        }))}
+      />
       {/* TODO: Update with functionality */}
-      <Pagination totalCards={117} currentPage={3} />
+      <Pagination totalCards={3} currentPage={1} />
     </>
   );
 }
