@@ -11,7 +11,7 @@ export const metadata: Metadata = {
     'Эта страница создана для демонстрации блоков и элементов, которые используются на сайте...',
 };
 
-export default function CoachsPage() {
+export default function CoachesPage() {
   return (
     <>
       <DescriptionPages descriptionPages={descriptionPages} />
