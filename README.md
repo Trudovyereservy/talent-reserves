@@ -48,11 +48,11 @@ http://127.0.0.1:8000/api/docs/
 
 Разработчики:
 
+- [Леонид Агалаков](https://github.com/Leonid-Agalakov-89)
 - [Вероника Лаптева](https://github.com/VeronikaLapteva)
 - [Виктория Латышева](https://github.com/vikkilat)
 - [Всеволод Зайковский](https://github.com/4lk4st)
 - [Павел Дёмин](https://github.com/energetikk)
-- [Леонид Агалаков](https://github.com/Leonid-Agalakov-89)
 
 
 </details>
