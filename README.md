@@ -44,7 +44,6 @@ http://127.0.0.1:8000/api/docs/
 
 Тимлид:
 
-- [Кирилл Лесников](https://github.com/lekirill)
 - [Константин Хлопков](https://github.com/kokhlo)
 
 Разработчики:
