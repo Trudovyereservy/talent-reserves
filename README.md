@@ -13,7 +13,6 @@
 - Django 4.2.7
 - DRF 3.14.0
 - Docker
-- Docker-Compose
 
 </details>
 
